@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0at61miyk1t"]
+
+[ext_resource type="Texture2D" uid="uid://olleavah8yen" path="res://Assets/ui_bakcground_mockup3.png" id="1_c78h2"]
+[ext_resource type="Script" uid="uid://db8fmd52ei7j6" path="res://Gameplay/PaintingOne/painting_one.gd" id="1_f8bbt"]
+[ext_resource type="Texture2D" uid="uid://cokl70yui52mi" path="res://Assets/Screenshot_2026-03-02_125128.png" id="2_f8bbt"]
+
+[node name="PaintingOne" type="Node2D"]
+script = ExtResource("1_f8bbt")
+
+[node name="SabatogeTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Backround" type="Sprite2D" parent="."]
+scale = Vector2(1.00628, 1.0084)
+texture = ExtResource("1_c78h2")
+
+[node name="Painting" type="Sprite2D" parent="."]
+texture = ExtResource("2_f8bbt")
+
+[connection signal="timeout" from="SabatogeTimer" to="." method="_on_sabatoge_timer_timeout"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
