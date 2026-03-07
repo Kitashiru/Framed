@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var SabatogeTimer = $SabatogeTimer
 @onready var ResetTimer = $ResetTimer
-
+@onready var StateLabel = $StateLabel
 
 enum PaintingState{
 	Rest,
@@ -20,6 +20,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	StateLabel.text = PaintingState.keys()[CurrentState]
 	pass
 
 
@@ -30,16 +31,35 @@ func ChangeToSabatoge() -> void:
 	CurrentState = PaintingState.Sabatoge
 
 func StartSabatogeTimer(Running: bool) -> void:
-	SabatogeTimer.paused = Running
-	ResetTimer.start()
-	ResetTimer.paused = true
+	if SabatogeTimer.is_stopped():
+		SabatogeTimer.start()
+		ResetTimer.stop()
 
 func StartResetTimer(Running: bool) -> void:
-	ResetTimer.paused = Running
+	if ResetTimer.is_stopped():
+		ResetTimer.start()
+		SabatogeTimer.stop()
 
 func _on_reset_timer_timeout() -> void:
+	print("rest timer started")
 	CurrentState = PaintingState.Rest
 
 
 func _on_sabatoge_timer_timeout() -> void:
 	CurrentState = PaintingState.Sabatoge
+
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
+		#print("2D object clicked!")
+		$SabotageMenu.visible = true
+
+func _on_yes_button_pressed() -> void:
+	if CurrentState == PaintingState.Sabatoge:
+		CurrentState = PaintingState.Rest
+		SabatogeTimer.stop()
+	$SabotageMenu.visible = false
+
+
+func _on_close_button_pressed() -> void:
+	$SabotageMenu.visible = false

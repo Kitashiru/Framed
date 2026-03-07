@@ -37,13 +37,12 @@ func _process(delta: float) -> void:
 		var painting = PaintingList[i]
 
 		if i == CameraSystem.CurrentPosition: #looking at painting
-			print("Player is looking at", painting.name)
+			#print("Player is looking at", painting.name)
 			if painting.CurrentState == 1: #Checking if painting is Mischievous
-				pass
+				painting.StartResetTimer(true)
 		else: #not looking at painting
-			print("Painting acting while not watched:", painting.name)
 			if painting.CurrentState == 1:#Checking if painting is Mischievous
-				pass
+				painting.StartSabatogeTimer(true)
 
 func ChangeTimeToString(time: float) -> String:
 	if not ".5" in str(time):
@@ -87,3 +86,7 @@ func _on_event_timer_timeout() -> void:
 		LeftNotice.visible = true
 		await get_tree().create_timer(2).timeout
 		LeftNotice.visible = false
+
+
+func _on_timer_timeout() -> void:
+	CurrentTime += 0.5

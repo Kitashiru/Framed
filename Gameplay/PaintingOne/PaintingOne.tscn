@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0at61miyk1t"]
+[gd_scene load_steps=5 format=3 uid="uid://b0at61miyk1t"]
 
 [ext_resource type="Texture2D" uid="uid://olleavah8yen" path="res://Assets/ui_bakcground_mockup3.png" id="1_c78h2"]
 [ext_resource type="Script" uid="uid://db8fmd52ei7j6" path="res://Gameplay/PaintingOne/painting_one.gd" id="1_f8bbt"]
 [ext_resource type="Texture2D" uid="uid://cokl70yui52mi" path="res://Assets/Screenshot_2026-03-02_125128.png" id="2_f8bbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8bbt"]
+size = Vector2(611, 814)
 
 [node name="PaintingOne" type="Node2D"]
 script = ExtResource("1_f8bbt")
@@ -20,5 +23,87 @@ texture = ExtResource("1_c78h2")
 [node name="Painting" type="Sprite2D" parent="."]
 texture = ExtResource("2_f8bbt")
 
+[node name="StateLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -504.0
+offset_right = 63.0
+offset_bottom = -421.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "Rest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SabotageMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="SabotageMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -127.0
+offset_right = 300.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.601223, 0.601223, 0.601223, 1)
+
+[node name="Label" type="Label" parent="SabotageMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -112.0
+offset_right = 248.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Is The Painting Sabotaged"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SabotageMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YesButton" type="Button" parent="SabotageMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Yes"
+
+[node name="CloseButton" type="Button" parent="SabotageMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Close"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_f8bbt")
+
 [connection signal="timeout" from="SabatogeTimer" to="." method="_on_sabatoge_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="pressed" from="SabotageMenu/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
