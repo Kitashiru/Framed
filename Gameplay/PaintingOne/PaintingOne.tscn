@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://olleavah8yen" path="res://Assets/ui_bakcground_mockup3.png" id="1_c78h2"]
 [ext_resource type="Script" uid="uid://db8fmd52ei7j6" path="res://Gameplay/PaintingOne/painting_one.gd" id="1_f8bbt"]
-[ext_resource type="Texture2D" uid="uid://cokl70yui52mi" path="res://Assets/Screenshot_2026-03-02_125128.png" id="2_f8bbt"]
+[ext_resource type="Texture2D" uid="uid://cokl70yui52mi" path="res://Assets/PaintingOne/Base.png" id="2_f8bbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8bbt"]
 size = Vector2(611, 814)
@@ -17,6 +17,7 @@ wait_time = 5.0
 wait_time = 5.0
 
 [node name="Backround" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.00628, 1.0084)
 texture = ExtResource("1_c78h2")
 
@@ -99,6 +100,7 @@ text = "Close"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_f8bbt")
 

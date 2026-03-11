@@ -3,6 +3,14 @@ extends Node2D
 @onready var SabatogeTimer = $SabatogeTimer
 @onready var ResetTimer = $ResetTimer
 @onready var StateLabel = $StateLabel
+@onready var PaintingSprite = $Painting
+
+var points = 0
+
+var baseImgPath = "res://Assets/PaintingOne/Base.png"
+var SabotageImgPath = "res://Assets/PaintingOne/Sabotage"
+
+var rng = RandomNumberGenerator.new()
 
 enum PaintingState{
 	Rest,
@@ -47,7 +55,8 @@ func _on_reset_timer_timeout() -> void:
 
 func _on_sabatoge_timer_timeout() -> void:
 	CurrentState = PaintingState.Sabatoge
-
+	var randomimg = rng.randi_range(1, 4)
+	PaintingSprite.texture = load(SabotageImgPath + str(randomimg) + ".png")
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
@@ -57,7 +66,11 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 func _on_yes_button_pressed() -> void:
 	if CurrentState == PaintingState.Sabatoge:
 		CurrentState = PaintingState.Rest
+		PaintingSprite.texture = load(baseImgPath)
+		points += 50
 		SabatogeTimer.stop()
+	else:
+		points -= 50
 	$SabotageMenu.visible = false
 
 

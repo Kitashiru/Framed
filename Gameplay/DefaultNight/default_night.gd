@@ -8,12 +8,19 @@ extends Node2D
 @onready var MiddlePainting = $PaintingOne
 @onready var RightPainting = $PaintingThree
 
+@onready var PauseScreen = $PauseScreen
+
 var PaintingList = []
 
 var rng = RandomNumberGenerator.new()
 
 var CurrentTime = 1
 var LastUpdatedTime
+
+var score = 0
+var LastUpdatedScore
+@onready var ScoreLabel = $CanvasLayer/ScoreLabel
+
 @onready var TimeLabel = $CanvasLayer/Label
 
 @onready var EventTimer = $EventTimer
@@ -33,6 +40,13 @@ func _process(delta: float) -> void:
 		TimeLabel.text = ChangeTimeToString(CurrentTime)
 		LastUpdatedTime = CurrentTime
 	
+	if score != MiddlePainting.points + LeftPainting.points + RightPainting.points:
+		score = MiddlePainting.points + LeftPainting.points + RightPainting.points
+	
+	if score != LastUpdatedScore:
+		ScoreLabel.text = str(score)
+		LastUpdatedScore = score
+
 	for i in range(PaintingList.size()):
 		var painting = PaintingList[i]
 
@@ -43,6 +57,8 @@ func _process(delta: float) -> void:
 		else: #not looking at painting
 			if painting.CurrentState == 1:#Checking if painting is Mischievous
 				painting.StartSabatogeTimer(true)
+				
+
 
 func ChangeTimeToString(time: float) -> String:
 	if not ".5" in str(time):
@@ -90,3 +106,11 @@ func _on_event_timer_timeout() -> void:
 
 func _on_timer_timeout() -> void:
 	CurrentTime += 0.5
+	if CurrentTime == 6:
+		pass
+
+
+func _on_pause_button_pressed() -> void:
+	PauseScreen.show()
+	PauseScreen.pause()
+	

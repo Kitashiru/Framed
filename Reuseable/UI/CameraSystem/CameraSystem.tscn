@@ -1,37 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://duiv4ofq35rkr"]
+[gd_scene load_steps=3 format=3 uid="uid://duiv4ofq35rkr"]
 
 [ext_resource type="Script" uid="uid://qoyd431302om" path="res://Reuseable/UI/CameraSystem/camera_system.gd" id="1_bcpub"]
+[ext_resource type="Texture2D" uid="uid://b560ru0mpqnka" path="res://Assets/UI Art/next_painting_button.png" id="2_14ccd"]
 
 [node name="CameraSystem" type="Node2D"]
 script = ExtResource("1_bcpub")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Buttons" type="CanvasLayer" parent="."]
 
-[node name="LeftButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_right = 117.0
-offset_bottom = 15.5
-grow_vertical = 2
-text = "Left"
-
-[node name="RightButton" type="Button" parent="CanvasLayer"]
+[node name="RightButton" type="TextureButton" parent="Buttons"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -15.5
-offset_bottom = 15.5
+offset_left = -216.0
+offset_top = -60.0
+offset_right = -115.0
+offset_bottom = 66.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Right"
+texture_normal = ExtResource("2_14ccd")
+
+[node name="LeftButton" type="TextureButton" parent="Buttons"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -60.0
+offset_right = 213.0
+offset_bottom = 66.0
+grow_vertical = 2
+texture_normal = ExtResource("2_14ccd")
+flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 
-[connection signal="pressed" from="CanvasLayer/LeftButton" to="." method="_on_left_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Buttons/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Buttons/LeftButton" to="." method="_on_left_button_pressed"]

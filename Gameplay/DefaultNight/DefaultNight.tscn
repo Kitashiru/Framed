@@ -1,8 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://d11ts5udqx56j"]
+[gd_scene load_steps=18 format=3 uid="uid://d11ts5udqx56j"]
 
 [ext_resource type="Script" uid="uid://u2ls5x2y722n" path="res://Gameplay/DefaultNight/default_night.gd" id="1_skfct"]
+[ext_resource type="Texture2D" uid="uid://bfoparwhixlrb" path="res://Assets/UI Art/paletteclock.png" id="2_n0q5s"]
 [ext_resource type="PackedScene" uid="uid://duiv4ofq35rkr" path="res://Reuseable/UI/CameraSystem/CameraSystem.tscn" id="2_r08xn"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="3_8gfuu"]
 [ext_resource type="PackedScene" uid="uid://b0at61miyk1t" path="res://Gameplay/PaintingOne/PaintingOne.tscn" id="4_n0q5s"]
+[ext_resource type="Texture2D" uid="uid://kcmcil7f672u" path="res://Assets/UI Art/moon.png" id="4_p1mjg"]
+[ext_resource type="Texture2D" uid="uid://bvsbybbtifcgh" path="res://Assets/UI Art/pausebutton.png" id="5_xppl8"]
+[ext_resource type="Texture2D" uid="uid://djimn5quepyuo" path="res://Assets/UI Art/pausebutton_hover.png" id="6_3k7ij"]
+[ext_resource type="Texture2D" uid="uid://8012eujrhvfm" path="res://Assets/UI Art/settingsbutton.png" id="7_cs0on"]
+[ext_resource type="Texture2D" uid="uid://dvfq6omc1djxh" path="res://Assets/UI Art/settingsbutton_hover.png" id="8_m5vxv"]
+[ext_resource type="Texture2D" uid="uid://bk1qia6041eb7" path="res://Assets/UI Art/homebutton.png" id="9_3ky3r"]
+[ext_resource type="Texture2D" uid="uid://uufkhh8mk5f4" path="res://Assets/UI Art/homebutton_hover.png" id="10_y83oj"]
+[ext_resource type="Texture2D" uid="uid://ccces6f5a2s5m" path="res://Assets/UI Art/alert.png" id="11_m5vxv"]
+[ext_resource type="Texture2D" uid="uid://btqe2aowsh821" path="res://Assets/UI Art/walkie.png" id="12_y83oj"]
+[ext_resource type="Texture2D" uid="uid://lyb7ot8cfy6n" path="res://Assets/UI Art/walkie_hover.png" id="13_cs4fl"]
+[ext_resource type="Texture2D" uid="uid://dyw6q8ffmgk24" path="res://Assets/fully_scrollable_bg.png" id="14_vxqca"]
+[ext_resource type="PackedScene" uid="uid://dpbyu42t7l5vq" path="res://Reuseable/UI/PauseScreen/PauseScreen.tscn" id="16_cs4fl"]
 
 [node name="DefaultNight" type="Node2D"]
 script = ExtResource("1_skfct")
@@ -11,44 +25,132 @@ MaximumEventTime = 20
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="Clock" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -91.0
-offset_bottom = 23.0
+offset_left = -259.0
+offset_top = 15.0
+offset_right = 218.0
+offset_bottom = 433.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 40
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_n0q5s")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 737.0
+offset_top = -438.0
+offset_right = 828.0
+offset_bottom = -377.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_8gfuu")
+theme_override_font_sizes/font_size = 60
 text = "1:00"
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Left" type="Label" parent="CanvasLayer"]
-visible = false
-anchors_preset = 4
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -152.0
-offset_right = 40.0
-offset_bottom = -15.0
+offset_left = 849.0
+offset_top = -376.0
+offset_right = 940.0
+offset_bottom = -315.0
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
-text = "!"
-horizontal_alignment = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_8gfuu")
+theme_override_font_sizes/font_size = 30
+text = "AM"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Right" type="Label" parent="CanvasLayer"]
-visible = false
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 1880.0
-offset_top = -152.0
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1829.0
+offset_top = 115.0
 offset_right = 1920.0
-offset_bottom = -15.0
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
-text = "!"
+offset_bottom = 206.0
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_p1mjg")
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1820.0
+offset_top = 52.0
+offset_right = 1920.0
+offset_bottom = 152.0
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("5_xppl8")
+texture_hover = ExtResource("6_3k7ij")
+
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1758.0
+offset_top = 24.0
+offset_right = 1858.0
+offset_bottom = 124.0
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("7_cs0on")
+texture_hover = ExtResource("8_m5vxv")
+
+[node name="HomeButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1708.0
+offset_top = 51.0
+offset_right = 1808.0
+offset_bottom = 151.0
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("9_3ky3r")
+texture_hover = ExtResource("10_y83oj")
+
+[node name="Right" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 1493.0
+offset_top = 274.0
+offset_right = 1788.0
+offset_bottom = 549.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_m5vxv")
+
+[node name="Left" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 203.0
+offset_top = 275.0
+offset_right = 498.0
+offset_bottom = 550.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_m5vxv")
+flip_h = true
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -255.0
+offset_right = 295.0
+offset_bottom = 225.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("12_y83oj")
+texture_hover = ExtResource("13_cs4fl")
+flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
@@ -56,15 +158,24 @@ autostart = true
 
 [node name="EventTimer" type="Timer" parent="."]
 
+[node name="FullyScrollableBg" type="Sprite2D" parent="."]
+position = Vector2(0.00012815, -1.43051e-05)
+scale = Vector2(1.506, 1.007)
+texture = ExtResource("14_vxqca")
+
+[node name="CameraSystem" parent="." instance=ExtResource("2_r08xn")]
+
 [node name="PaintingOne" parent="." instance=ExtResource("4_n0q5s")]
 
 [node name="PaintingTwo" parent="." instance=ExtResource("4_n0q5s")]
 position = Vector2(-1920, 0)
 
-[node name="CameraSystem" parent="." instance=ExtResource("2_r08xn")]
-
 [node name="PaintingThree" parent="." instance=ExtResource("4_n0q5s")]
 position = Vector2(1920, 0)
 
+[node name="PauseScreen" parent="." instance=ExtResource("16_cs4fl")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]

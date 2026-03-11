@@ -1,8 +1,11 @@
 extends Node2D
 
 @onready var camera = $Camera2D
-@onready var LeftButton = $CanvasLayer/LeftButton
-@onready var RightButton = $CanvasLayer/RightButton
+
+@onready var buttonGroup = $Buttons
+@onready var LeftButton = $Buttons/LeftButton
+@onready var RightButton = $Buttons/RightButton
+
 var CamMiddlePos = Vector2(0.0, 0.0)
 var CamLeftPos = Vector2(-1920.0, 0.0)
 var CamRightPos = Vector2(1920.0, 0.0)
@@ -33,15 +36,6 @@ func _process(delta: float) -> void:
 		LeftButton.visible = true
 
 
-func _on_left_button_pressed() -> void:
-	if CurrentPosition == Position.Middle:
-		camera.position = CamLeftPos
-		CurrentPosition = Position.Left
-	if CurrentPosition == Position.Right:
-		camera.position = CamMiddlePos
-		CurrentPosition = Position.Middle
-
-
 func _on_right_button_pressed() -> void:
 	if CurrentPosition == Position.Middle:
 		camera.position = CamRightPos
@@ -49,3 +43,13 @@ func _on_right_button_pressed() -> void:
 	if CurrentPosition == Position.Left:
 		camera.position = CamMiddlePos
 		CurrentPosition = Position.Middle
+
+
+func _on_left_button_pressed() -> void:
+		if CurrentPosition == Position.Middle:
+			camera.position = CamLeftPos
+			CurrentPosition = Position.Left
+		
+		if CurrentPosition == Position.Right:
+			camera.position = CamMiddlePos
+			CurrentPosition = Position.Middle
