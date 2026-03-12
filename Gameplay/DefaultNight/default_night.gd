@@ -114,3 +114,8 @@ func _on_pause_button_pressed() -> void:
 	PauseScreen.show()
 	PauseScreen.pause()
 	
+
+
+func _on_hint_button_pressed() -> void:
+	Dialogic.start("PaintingOne-HintOne")
+	pass
