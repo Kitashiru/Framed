@@ -63,7 +63,7 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		#print("2D object clicked!")
 		$SabotageMenu.visible = true
 
-func _on_yes_button_pressed() -> void:
+func _on_check_button_pressed() -> void:
 	if CurrentState == PaintingState.Sabatoge:
 		CurrentState = PaintingState.Rest
 		PaintingSprite.texture = load(baseImgPath)

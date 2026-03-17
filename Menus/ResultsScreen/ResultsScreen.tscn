@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5bk23wblcy0i"]
+
+[ext_resource type="Texture2D" uid="uid://blo1pduqrtpv0" path="res://Assets/UI Art/framing_results.png" id="1_d0mji"]
+[ext_resource type="Texture2D" uid="uid://dy11bgm1aree" path="res://Assets/UI Art/score_frame.png" id="2_febek"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="3_d84fy"]
+
+[sub_resource type="Theme" id="Theme_x4l00"]
+default_font = ExtResource("3_d84fy")
+default_font_size = 100
+
+[node name="ResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_d0mji")
+
+[node name="ScoreFrame" type="Sprite2D" parent="."]
+position = Vector2(1514, 468)
+texture = ExtResource("2_febek")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 80.0
+offset_right = 790.0
+offset_bottom = 181.0
+theme = SubResource("Theme_x4l00")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[u]Conditions:[u]"
+fit_content = true
+autowrap_mode = 0

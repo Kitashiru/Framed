@@ -1,8 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0at61miyk1t"]
+[gd_scene load_steps=18 format=3 uid="uid://b0at61miyk1t"]
 
 [ext_resource type="Texture2D" uid="uid://olleavah8yen" path="res://Assets/ui_bakcground_mockup3.png" id="1_c78h2"]
 [ext_resource type="Script" uid="uid://db8fmd52ei7j6" path="res://Gameplay/PaintingOne/painting_one.gd" id="1_f8bbt"]
 [ext_resource type="Texture2D" uid="uid://cokl70yui52mi" path="res://Assets/PaintingOne/Base.png" id="2_f8bbt"]
+[ext_resource type="Texture2D" uid="uid://dyy7mggcdwbkm" path="res://Assets/UI Art/checklist.png" id="4_adk4f"]
+[ext_resource type="Texture2D" uid="uid://31kx4ppaswxm" path="res://Assets/UI Art/check_not_hovered.png" id="5_qarid"]
+[ext_resource type="Texture2D" uid="uid://dwi05x3uq5kyt" path="res://Assets/UI Art/check_hovered.png" id="6_gve8l"]
+[ext_resource type="Texture2D" uid="uid://dm62px7g2ic6h" path="res://Assets/UI Art/cross_not_hovered.png" id="7_04uoj"]
+[ext_resource type="Texture2D" uid="uid://bci5n6pyr6jn3" path="res://Assets/UI Art/cross_hovered.png" id="8_aiw0w"]
+[ext_resource type="Texture2D" uid="uid://bwm5gtthochj" path="res://Assets/UI Art/tab_face.png" id="9_04uoj"]
+[ext_resource type="Texture2D" uid="uid://c25lwqrwyqpy3" path="res://Assets/UI Art/tab_face_hover.png" id="10_aiw0w"]
+[ext_resource type="Texture2D" uid="uid://drlsvaoxy1uh" path="res://Assets/UI Art/tab_body.png" id="11_8ka1v"]
+[ext_resource type="Texture2D" uid="uid://dp2mwyv68sdsy" path="res://Assets/UI Art/tab_body_hover.png" id="12_ckhph"]
+[ext_resource type="Texture2D" uid="uid://1e6jtg8qnhfi" path="res://Assets/UI Art/tab_bg.png" id="13_vpoqd"]
+[ext_resource type="Texture2D" uid="uid://bgulnmy24x7pi" path="res://Assets/UI Art/tab_bg_hover.png" id="14_418ro"]
+[ext_resource type="Texture2D" uid="uid://b3u5efm1ssew1" path="res://Assets/UI Art/tab_color.png" id="15_oj0qg"]
+[ext_resource type="Texture2D" uid="uid://binp051buyp0f" path="res://Assets/UI Art/tab_color_hover.png" id="16_1lrd0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8bbt"]
 size = Vector2(611, 814)
@@ -45,57 +58,63 @@ vertical_alignment = 1
 [node name="SabotageMenu" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="SabotageMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -127.0
-offset_right = 300.0
-offset_bottom = 58.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.601223, 0.601223, 0.601223, 1)
+[node name="TextureRect" type="TextureRect" parent="SabotageMenu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -461.0
+offset_top = -798.0
+offset_right = 152.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_adk4f")
 
-[node name="Label" type="Label" parent="SabotageMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -248.0
-offset_top = -112.0
-offset_right = 248.0
-offset_bottom = -57.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "Is The Painting Sabotaged"
+[node name="CheckButton" type="TextureButton" parent="SabotageMenu"]
+offset_left = 1525.0
+offset_top = 930.0
+offset_right = 1675.0
+offset_bottom = 1080.0
+texture_normal = ExtResource("5_qarid")
+texture_hover = ExtResource("6_gve8l")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SabotageMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -20.0
-offset_right = 35.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CloseButton" type="TextureButton" parent="SabotageMenu"]
+offset_left = 1687.0
+offset_top = 930.0
+offset_right = 1837.0
+offset_bottom = 1080.0
+texture_normal = ExtResource("7_04uoj")
+texture_hover = ExtResource("8_aiw0w")
 
-[node name="YesButton" type="Button" parent="SabotageMenu/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SabotageMenu"]
+offset_left = 1326.0
+offset_top = 299.0
+offset_right = 1518.0
+offset_bottom = 1064.0
+scale = Vector2(0.75, 0.75)
+
+[node name="TextureButton3" type="TextureButton" parent="SabotageMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Yes"
+texture_normal = ExtResource("9_04uoj")
+texture_hover = ExtResource("10_aiw0w")
 
-[node name="CloseButton" type="Button" parent="SabotageMenu/HBoxContainer"]
+[node name="TextureButton4" type="TextureButton" parent="SabotageMenu/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Close"
+texture_normal = ExtResource("11_8ka1v")
+texture_hover = ExtResource("12_ckhph")
+
+[node name="TextureButton" type="TextureButton" parent="SabotageMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_vpoqd")
+texture_hover = ExtResource("14_418ro")
+
+[node name="TextureButton2" type="TextureButton" parent="SabotageMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_oj0qg")
+texture_hover = ExtResource("16_1lrd0")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -106,6 +125,6 @@ shape = SubResource("RectangleShape2D_f8bbt")
 
 [connection signal="timeout" from="SabatogeTimer" to="." method="_on_sabatoge_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
-[connection signal="pressed" from="SabotageMenu/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="SabotageMenu/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
