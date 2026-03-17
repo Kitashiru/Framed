@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cokl70yui52mi"
-path="res://.godot/imported/Base.png-d1bd5f1bb4b916575298014d112a634c.ctex"
+uid="uid://ceoymb36v5dlb"
+path="res://.godot/imported/base_girl_with_pearl_earring.png-78cbeb0b23fbcdcfc495dfecfae3a95a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PaintingOne/Base.png"
-dest_files=["res://.godot/imported/Base.png-d1bd5f1bb4b916575298014d112a634c.ctex"]
+source_file="res://Assets/PaintingOne/base_girl_with_pearl_earring.png"
+dest_files=["res://.godot/imported/base_girl_with_pearl_earring.png-78cbeb0b23fbcdcfc495dfecfae3a95a.ctex"]
 
 [params]
 

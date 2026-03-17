@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://067hlf1usgmw"
-path="res://.godot/imported/Sabotage4.png-ab9cd9d3d4fedbe79339cbc1a7ae214e.ctex"
+uid="uid://dyenrvfd7pgrr"
+path="res://.godot/imported/sab4_girl_with_pearl_earring.png-1da3284c8e89c5ef6fb8c9af2a7dd466.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PaintingOne/Sabotage4.png"
-dest_files=["res://.godot/imported/Sabotage4.png-ab9cd9d3d4fedbe79339cbc1a7ae214e.ctex"]
+source_file="res://Assets/PaintingOne/sab4_girl_with_pearl_earring.png"
+dest_files=["res://.godot/imported/sab4_girl_with_pearl_earring.png-1da3284c8e89c5ef6fb8c9af2a7dd466.ctex"]
 
 [params]
 

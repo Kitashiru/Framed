@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0at61miyk1t"]
+[gd_scene load_steps=19 format=3 uid="uid://b0at61miyk1t"]
 
 [ext_resource type="Texture2D" uid="uid://olleavah8yen" path="res://Assets/ui_bakcground_mockup3.png" id="1_c78h2"]
 [ext_resource type="Script" uid="uid://db8fmd52ei7j6" path="res://Gameplay/PaintingOne/painting_one.gd" id="1_f8bbt"]
-[ext_resource type="Texture2D" uid="uid://cokl70yui52mi" path="res://Assets/PaintingOne/Base.png" id="2_f8bbt"]
+[ext_resource type="Texture2D" uid="uid://ceoymb36v5dlb" path="res://Assets/PaintingOne/base_girl_with_pearl_earring.png" id="3_8ka1v"]
 [ext_resource type="Texture2D" uid="uid://dyy7mggcdwbkm" path="res://Assets/UI Art/checklist.png" id="4_adk4f"]
 [ext_resource type="Texture2D" uid="uid://31kx4ppaswxm" path="res://Assets/UI Art/check_not_hovered.png" id="5_qarid"]
 [ext_resource type="Texture2D" uid="uid://dwi05x3uq5kyt" path="res://Assets/UI Art/check_hovered.png" id="6_gve8l"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bgulnmy24x7pi" path="res://Assets/UI Art/tab_bg_hover.png" id="14_418ro"]
 [ext_resource type="Texture2D" uid="uid://b3u5efm1ssew1" path="res://Assets/UI Art/tab_color.png" id="15_oj0qg"]
 [ext_resource type="Texture2D" uid="uid://binp051buyp0f" path="res://Assets/UI Art/tab_color_hover.png" id="16_1lrd0"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="17_ckhph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8bbt"]
 size = Vector2(611, 814)
@@ -35,7 +36,8 @@ scale = Vector2(1.00628, 1.0084)
 texture = ExtResource("1_c78h2")
 
 [node name="Painting" type="Sprite2D" parent="."]
-texture = ExtResource("2_f8bbt")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_8ka1v")
 
 [node name="StateLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -56,7 +58,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SabotageMenu" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="SabotageMenu"]
 anchors_preset = 3
@@ -116,10 +117,92 @@ layout_mode = 2
 texture_normal = ExtResource("15_oj0qg")
 texture_hover = ExtResource("16_1lrd0")
 
+[node name="Label" type="Label" parent="SabotageMenu"]
+offset_left = 1469.0
+offset_top = 301.0
+offset_right = 1908.0
+offset_bottom = 422.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 90
+text = "CheckList"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="SabotageMenu"]
+offset_left = 1512.0
+offset_top = 390.0
+offset_right = 1867.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Mark Everything That is Wrong"
+
+[node name="Face" type="VBoxContainer" parent="SabotageMenu"]
+offset_left = 1518.0
+offset_top = 430.0
+offset_right = 1705.0
+offset_bottom = 850.0
+
+[node name="Label" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Eyes"
+
+[node name="Label2" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Eyebrows"
+
+[node name="Label3" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Nose"
+
+[node name="Label4" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Mouth"
+
+[node name="Label5" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Ears"
+
+[node name="Label6" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Makeup"
+
+[node name="Label7" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "HeadPiece"
+
+[node name="Label8" type="Label" parent="SabotageMenu/Face"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_ckhph")
+theme_override_font_sizes/font_size = 48
+text = "Jewelry"
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_f8bbt")
 

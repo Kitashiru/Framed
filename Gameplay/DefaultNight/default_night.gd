@@ -72,23 +72,26 @@ func _on_event_timer_timeout() -> void:
 	if CurrentCamPos == 0: #Middle
 		var random = rng.randi_range(1, 2)
 		if random == 1:
-			LeftPainting.ChangeToMischievous()
-			LeftNotice.visible = true
-			await get_tree().create_timer(2).timeout
-			LeftNotice.visible = false
+			if LeftPainting.CurrentState == 0:
+				LeftPainting.ChangeToMischievous()
+				LeftNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				LeftNotice.visible = false
 		if random == 2:
-			RightPainting.ChangeToMischievous()
-			RightNotice.visible = true
-			await get_tree().create_timer(2).timeout
-			RightNotice.visible = false
+			if RightPainting.CurrentState == 0:
+				RightPainting.ChangeToMischievous()
+				RightNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				RightNotice.visible = false
 
 	elif CurrentCamPos == 1: #Left
 		var random = rng.randi_range(1, 2) # 1=Middle 2=Right
 		if random == 1:
-			MiddlePainting.ChangeToMischievous()
-			MiddlePainting.StartSabatogeTimer(true)
+			if MiddlePainting.CurrentState == 0:
+				MiddlePainting.ChangeToMischievous()
 		else:
-			RightPainting.ChangeToMischievous()
+			if RightPainting.CurrentState == 0:
+				RightPainting.ChangeToMischievous()
 		RightNotice.visible = true
 		await get_tree().create_timer(2).timeout
 		RightNotice.visible = false
@@ -96,9 +99,11 @@ func _on_event_timer_timeout() -> void:
 	elif CurrentCamPos == 2: #Right
 		var random = rng.randi_range(1, 2) # 1=Middle 2=Left
 		if random == 1:
-			MiddlePainting.ChangeToMischievous()
+			if MiddlePainting.CurrentState == 0:
+				MiddlePainting.ChangeToMischievous()
 		else:
-			LeftPainting.ChangeToMischievous()
+			if LeftPainting.CurrentState == 0:
+				LeftPainting.ChangeToMischievous()
 		LeftNotice.visible = true
 		await get_tree().create_timer(2).timeout
 		LeftNotice.visible = false
