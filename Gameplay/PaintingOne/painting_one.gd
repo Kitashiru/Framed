@@ -4,6 +4,7 @@ extends Node2D
 @onready var ResetTimer = $ResetTimer
 @onready var StateLabel = $StateLabel
 @onready var PaintingSprite = $Painting
+@onready var animationplayer = $AnimationPlayer
 
 var points = 0
 
@@ -78,3 +79,26 @@ func _on_check_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	$SabotageMenu.visible = false
+
+
+func _on_face_button_pressed() -> void:
+	animationplayer.play("RESET")
+	await animationplayer.animation_finished
+	animationplayer.play("ShowFaceContainer")
+
+
+func _on_outfit_button_pressed() -> void:
+	animationplayer.play("RESET")
+	await animationplayer.animation_finished
+	animationplayer.play("ShowOutfitContainer")
+
+
+func _on_backround_button_pressed() -> void:
+	animationplayer.play("RESET")
+	await animationplayer.animation_finished
+	animationplayer.play("ShowBackroundContainer")
+
+func _on_color_button_pressed() -> void:
+	animationplayer.play("RESET")
+	await animationplayer.animation_finished
+	animationplayer.play("ShowColorContainer")

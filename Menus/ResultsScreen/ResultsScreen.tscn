@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5bk23wblcy0i"]
+[gd_scene load_steps=7 format=3 uid="uid://b5bk23wblcy0i"]
 
 [ext_resource type="Texture2D" uid="uid://blo1pduqrtpv0" path="res://Assets/UI Art/framing_results.png" id="1_d0mji"]
 [ext_resource type="Texture2D" uid="uid://dy11bgm1aree" path="res://Assets/UI Art/score_frame.png" id="2_febek"]
 [ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="3_d84fy"]
+[ext_resource type="Texture2D" uid="uid://c7h5tmrw0v733" path="res://Assets/UI Art/framebutton.png" id="4_d84fy"]
+[ext_resource type="Texture2D" uid="uid://dus7x1tuxvt1s" path="res://Assets/UI Art/framebutton_hover.png" id="5_x4l00"]
 
 [sub_resource type="Theme" id="Theme_x4l00"]
 default_font = ExtResource("3_d84fy")
-default_font_size = 100
+default_font_size = 120
 
 [node name="ResultsScreen" type="Control"]
 layout_mode = 3
@@ -26,15 +28,170 @@ texture = ExtResource("1_d0mji")
 position = Vector2(1514, 468)
 texture = ExtResource("2_febek")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="ConditionContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 373.0
 offset_top = 80.0
-offset_right = 790.0
-offset_bottom = 181.0
+offset_right = 815.0
+offset_bottom = 226.0
+theme_override_constants/margin_left = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConditionContainer"]
+layout_mode = 2
+theme_override_constants/separation = 29
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
 theme = SubResource("Theme_x4l00")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "[u]Conditions:[u]"
 fit_content = true
 autowrap_mode = 0
+
+[node name="Label" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 60
+text = "Standard Conditions:"
+vertical_alignment = 1
+
+[node name="CorrectSabotageCount" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "Sabotages Corrected: 0"
+
+[node name="CorrectSabotageScore" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "+ 0"
+
+[node name="WrongSabotageCount2" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "Incorrect Sabotages: 0"
+
+[node name="WrongSabotageScore2" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "- 0"
+
+[node name="Label2" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 60
+text = "Unique Conditions:"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConditionContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "First Day Bonus: "
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ConditionContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "+195"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConditionContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "Idiling"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ConditionContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "-0"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1284.0
+offset_top = 166.0
+offset_right = 1745.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 200
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1284.0
+offset_top = 421.0
+offset_right = 1745.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 250
+text = "4415"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -286.0
+offset_top = -215.0
+offset_right = 87.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_d84fy")
+texture_hover = ExtResource("5_x4l00")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 120
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1

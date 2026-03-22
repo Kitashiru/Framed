@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var Self = $"."
 @onready var CameraSystem = $CameraSystem
 @onready var LeftNotice = $CanvasLayer/Left
 @onready var RightNotice = $CanvasLayer/Right
@@ -10,11 +11,13 @@ extends Node2D
 
 @onready var PauseScreen = $PauseScreen
 
+@onready var SFXPlayer = $CanvasLayer/SfxPlayer
+
 var PaintingList = []
 
 var rng = RandomNumberGenerator.new()
 
-var CurrentTime = 1
+var CurrentTime = 12
 var LastUpdatedTime
 
 var score = 0
@@ -22,17 +25,30 @@ var LastUpdatedScore
 @onready var ScoreLabel = $CanvasLayer/ScoreLabel
 
 @onready var TimeLabel = $CanvasLayer/Label
-
+@onready var AM_PM_Label = $CanvasLayer/Label2
 @onready var EventTimer = $EventTimer
 @export var MinimumEventTime:int
 @export var MaximumEventTime:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	PlayIntro()
 	var random_time = rng.randi_range(MinimumEventTime, MaximumEventTime)
 	EventTimer.wait_time = random_time
 	EventTimer.start()
 	PaintingList = [MiddlePainting, LeftPainting, RightPainting]
+
+func PlayIntro() -> void:
+	Dialogic.timeline_ended.connect(IntroEnded)
+	Dialogic.timeline_started.connect(IntroStarted)
+	Dialogic.start("Intro")
+
+func IntroStarted():
+	Self.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	
+func IntroEnded():
+	Self.process_mode = ProcessMode.PROCESS_MODE_INHERIT
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -110,9 +126,14 @@ func _on_event_timer_timeout() -> void:
 
 
 func _on_timer_timeout() -> void:
-	CurrentTime += 0.5
-	if CurrentTime == 6:
-		pass
+	if CurrentTime == 12:
+		AM_PM_Label.text = "AM"
+	if CurrentTime == 12.5:
+		CurrentTime = 1
+	else:
+		CurrentTime += 0.5
+		if CurrentTime == 6:
+			get_tree().change_scene_to_file("res://Menus/ResultsScreen/ResultsScreen.tscn")
 
 
 func _on_pause_button_pressed() -> void:
@@ -124,3 +145,13 @@ func _on_pause_button_pressed() -> void:
 func _on_hint_button_pressed() -> void:
 	Dialogic.start("PaintingOne-HintOne")
 	pass
+
+
+func _on_right_visibility_changed() -> void:
+	if RightNotice.visible == true:
+		SFXPlayer.PlayRandomSound()
+
+
+func _on_left_visibility_changed() -> void:
+	if LeftNotice.visible == true:
+		SFXPlayer.PlayRandomSound()

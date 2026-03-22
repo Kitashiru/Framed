@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://obuwuemj7iju"]
+[gd_scene load_steps=12 format=3 uid="uid://obuwuemj7iju"]
 
 [ext_resource type="Script" uid="uid://etacj1hao2tc" path="res://Menus/MainMenu/main_menu.gd" id="1_0bhet"]
 [ext_resource type="Texture2D" uid="uid://b1jxqk2788oi2" path="res://Assets/UI Art/mainmenu_bg.png" id="2_k3ndf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c7h5tmrw0v733" path="res://Assets/UI Art/framebutton.png" id="4_m3rfa"]
 [ext_resource type="Texture2D" uid="uid://dus7x1tuxvt1s" path="res://Assets/UI Art/framebutton_hover.png" id="5_di3pw"]
 [ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="6_ng4bt"]
+[ext_resource type="Texture2D" uid="uid://c2ygapntxyyc8" path="res://Assets/UI Art/options_popup_window.png" id="7_m3rfa"]
 
 [sub_resource type="Animation" id="Animation_ng4bt"]
 resource_name = "Click"
@@ -61,11 +62,76 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/TextureRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(421, 224)]
+}
+
+[sub_resource type="Animation" id="Animation_di3pw"]
+resource_name = "ShowOptions"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TextureRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(421, 224), Vector2(421, 16)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_di3pw"]
 _data = {
 &"Click": SubResource("Animation_ng4bt"),
-&"RESET": SubResource("Animation_m3rfa")
+&"RESET": SubResource("Animation_m3rfa"),
+&"ShowOptions": SubResource("Animation_di3pw")
 }
 
 [node name="MainMenu" type="Control"]
@@ -225,6 +291,130 @@ theme_override_fonts/font = ExtResource("6_ng4bt")
 theme_override_font_sizes/font_size = 90
 text = "Click Here"
 
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -173.0
+offset_right = 509.0
+offset_bottom = 818.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.740788, 0.638556)
+texture = ExtResource("7_m3rfa")
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.668
+offset_top = 31.3207
+offset_right = 127.332
+offset_bottom = 122.321
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 90
+text = "Options"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect2"]
+layout_mode = 0
+offset_left = 94.494
+offset_top = 270.924
+offset_right = 444.494
+offset_bottom = 503.924
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Master Volume"
+
+[node name="Label2" type="Label" parent="CanvasLayer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "SFX Volume"
+
+[node name="Label3" type="Label" parent="CanvasLayer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Music Volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/TextureRect2"]
+z_index = 11
+y_sort_enabled = true
+offset_left = 480.569
+offset_top = 277.188
+offset_right = 577.569
+offset_bottom = 293.188
+scale = Vector2(2, 2)
+max_value = 1.5
+step = 0.001
+ticks_on_borders = true
+
+[node name="SFXVolumeSlider" type="HSlider" parent="CanvasLayer/TextureRect2"]
+z_index = 11
+y_sort_enabled = true
+offset_left = 480.569
+offset_top = 364.886
+offset_right = 577.569
+offset_bottom = 380.886
+scale = Vector2(2, 2)
+max_value = 1.5
+step = 0.001
+ticks_on_borders = true
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/TextureRect2"]
+z_index = 11
+y_sort_enabled = true
+offset_left = 480.569
+offset_top = 452.584
+offset_right = 577.569
+offset_bottom = 468.584
+scale = Vector2(2, 2)
+max_value = 1.5
+step = 0.001
+ticks_on_borders = true
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer/TextureRect2"]
+layout_mode = 0
+offset_left = 321.279
+offset_top = 815.903
+offset_right = 694.279
+offset_bottom = 1016.9
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_m3rfa")
+texture_hover = ExtResource("5_di3pw")
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect2/BackButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 90
+text = "Back"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_di3pw")
@@ -234,3 +424,4 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureRect2/BackButton" to="." method="_on_back_button_pressed"]

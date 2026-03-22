@@ -24,7 +24,7 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
-	pass # Replace with function body.
+	animationPlayer.play("ShowOptions")
 
 
 func _on_credits_button_pressed() -> void:
@@ -33,3 +33,7 @@ func _on_credits_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_back_button_pressed() -> void:
+	animationPlayer.play_backwards("ShowOptions")
