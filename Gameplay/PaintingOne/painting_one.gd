@@ -56,10 +56,13 @@ func _on_reset_timer_timeout() -> void:
 
 func _on_sabatoge_timer_timeout() -> void:
 	CurrentState = PaintingState.Sabatoge
-	var randomimg = rng.randi_range(1, 4)
-	PaintingSprite.texture = load(ImgFolderPath + "sab" + str(randomimg) + "_girl_with_pearl_earring.png")
+	setSabotage()
 	ResetTimer.stop()
 	SabatogeTimer.stop()
+
+func setSabotage():
+	var randomimg = rng.randi_range(1, 4)
+	PaintingSprite.texture = load(ImgFolderPath + "sab" + str(randomimg) + "_girl_with_pearl_earring.png")
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
