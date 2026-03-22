@@ -354,6 +354,7 @@ text = "Music Volume"
 [node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/TextureRect2"]
 z_index = 11
 y_sort_enabled = true
+layout_mode = 0
 offset_left = 480.569
 offset_top = 277.188
 offset_right = 577.569
@@ -366,6 +367,7 @@ ticks_on_borders = true
 [node name="SFXVolumeSlider" type="HSlider" parent="CanvasLayer/TextureRect2"]
 z_index = 11
 y_sort_enabled = true
+layout_mode = 0
 offset_left = 480.569
 offset_top = 364.886
 offset_right = 577.569
@@ -378,6 +380,7 @@ ticks_on_borders = true
 [node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/TextureRect2"]
 z_index = 11
 y_sort_enabled = true
+layout_mode = 0
 offset_left = 480.569
 offset_top = 452.584
 offset_right = 577.569

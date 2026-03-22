@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" uid="uid://da21ju8ce3o6r" path="res://Reuseable/SFXPlayer/sfx_player.gd" id="1_xqum5"]
 
-[node name="SfxPlayer" type="AudioStreamPlayer"]
+[node name="SFXPlayer" type="AudioStreamPlayer"]
 bus = &"SFX"
 script = ExtResource("1_xqum5")
