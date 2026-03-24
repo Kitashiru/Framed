@@ -184,7 +184,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SabotageMenu" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="SabotageMenu"]
 anchors_preset = 15
@@ -322,7 +321,7 @@ theme_override_fonts/font = ExtResource("17_ckhph")
 theme_override_font_sizes/font_size = 48
 text = "Hair"
 
-[node name="CheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+[node name="EyesCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 432.0
@@ -333,7 +332,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox2" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+[node name="EyebrowsCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 485.0
@@ -344,7 +343,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox3" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+[node name="MouthCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 538.0
@@ -355,7 +354,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox4" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+[node name="MakeupCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 590.0
@@ -366,7 +365,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox5" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+[node name="HairCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 643.0
@@ -426,7 +425,7 @@ theme_override_fonts/font = ExtResource("17_ckhph")
 theme_override_font_sizes/font_size = 48
 text = "Neckwear"
 
-[node name="CheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+[node name="HatCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 432.0
@@ -437,7 +436,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox2" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+[node name="EarringCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 485.0
@@ -448,7 +447,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox3" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+[node name="TopCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 538.0
@@ -459,7 +458,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox4" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+[node name="OuterWearCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 590.0
@@ -470,7 +469,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox5" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+[node name="NeckwearCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 643.0
@@ -523,7 +522,7 @@ theme_override_fonts/font = ExtResource("17_ckhph")
 theme_override_font_sizes/font_size = 48
 text = "Decorations"
 
-[node name="CheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+[node name="SkyCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 432.0
@@ -534,7 +533,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox2" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+[node name="SeaCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 485.0
@@ -545,7 +544,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox3" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+[node name="HouseCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 538.0
@@ -556,7 +555,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox4" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+[node name="DecorationsCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 590.0
@@ -602,7 +601,7 @@ theme_override_fonts/font = ExtResource("17_ckhph")
 theme_override_font_sizes/font_size = 48
 text = "Hat"
 
-[node name="CheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
+[node name="TopColorCheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 432.0
@@ -613,7 +612,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox2" type="CheckBox" parent="SabotageMenu/ColorContainer"]
+[node name="HairColorCheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 485.0
@@ -624,7 +623,7 @@ theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
 
-[node name="CheckBox3" type="CheckBox" parent="SabotageMenu/ColorContainer"]
+[node name="HatColorCheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
 layout_mode = 0
 offset_left = 1819.0
 offset_top = 538.0

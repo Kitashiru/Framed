@@ -1,5 +1,30 @@
 extends Node2D
 
+#face Checkboxes
+@onready var EyesCheckBox = $SabotageMenu/FaceContainer/EyesCheckBox
+@onready var EyebrowsCheckBox = $SabotageMenu/FaceContainer/EyebrowsCheckBox
+@onready var MouthCheckBox = $SabotageMenu/FaceContainer/MouthCheckBox
+@onready var MakeupCheckBox = $SabotageMenu/FaceContainer/MakeupCheckBox
+@onready var HairCheckBox = $SabotageMenu/FaceContainer/HairCheckBox
+
+#Outfit Checkboxes
+@onready var HatCheckBox = $SabotageMenu/OutfitContainer/HatCheckBox
+@onready var EarringCheckBox = $SabotageMenu/OutfitContainer/EarringCheckBox
+@onready var TopCheckBox = $SabotageMenu/OutfitContainer/TopCheckBox
+@onready var OuterWearCheckBox = $SabotageMenu/OutfitContainer/OuterWearCheckBox
+@onready var NeckWearCheckBox = $SabotageMenu/OutfitContainer/NeckwearCheckBox
+
+#Backround Checkboxes
+@onready var SkyCheckBox = $SabotageMenu/BackroundContainer/SkyCheckBox
+@onready var SeaCheckBox = $SabotageMenu/BackroundContainer/SeaCheckBox
+@onready var HouseCheckBox = $SabotageMenu/BackroundContainer/HouseCheckBox
+@onready var DecorationsCheckBox = $SabotageMenu/BackroundContainer/DecorationsCheckBox
+
+#Color Checkboxes
+@onready var TopColorCheckBox = $SabotageMenu/ColorContainer/TopColorCheckBox
+@onready var HairColorCheckBox = $SabotageMenu/ColorContainer/HairColorCheckBox
+@onready var HatColorCheckBox = $SabotageMenu/ColorContainer/HatColorCheckBox
+
 @onready var SabatogeTimer = $SabatogeTimer
 @onready var ResetTimer = $ResetTimer
 @onready var StateLabel = $StateLabel
@@ -16,7 +41,10 @@ var rng = RandomNumberGenerator.new()
 enum PaintingState{
 	Rest,
 	Mischievous,
-	Sabatoge
+	Sabotage1,
+	Sabotage2,
+	Sabotage3,
+	Sabotage4
 }
 
 var CurrentState = PaintingState.Rest
@@ -36,8 +64,8 @@ func _process(delta: float) -> void:
 func ChangeToMischievous() -> void:
 	CurrentState = PaintingState.Mischievous
 	
-func ChangeToSabatoge() -> void:
-	CurrentState = PaintingState.Sabatoge
+#func ChangeToSabatoge() -> void:
+#	CurrentState = PaintingState.Sabatoge
 
 func StartSabatogeTimer(Running: bool) -> void:
 	if SabatogeTimer.is_stopped():
@@ -55,14 +83,24 @@ func _on_reset_timer_timeout() -> void:
 
 
 func _on_sabatoge_timer_timeout() -> void:
-	CurrentState = PaintingState.Sabatoge
 	setSabotage()
 	ResetTimer.stop()
 	SabatogeTimer.stop()
 
 func setSabotage():
-	var randomimg = rng.randi_range(1, 4)
-	PaintingSprite.texture = load(ImgFolderPath + "sab" + str(randomimg) + "_girl_with_pearl_earring.png")
+	var SabotageNumber = rng.randi_range(1, 4)
+	if SabotageNumber == 1:
+		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_girl_with_pearl_earring.png")
+		CurrentState = PaintingState.Sabotage1
+	elif SabotageNumber == 2:
+		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_girl_with_pearl_earring.png")
+		CurrentState = PaintingState.Sabotage2
+	elif SabotageNumber == 3:
+		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_girl_with_pearl_earring.png")
+		CurrentState = PaintingState.Sabotage3
+	elif SabotageNumber == 4:
+		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_girl_with_pearl_earring.png")
+		CurrentState = PaintingState.Sabotage4
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
@@ -70,15 +108,152 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		$SabotageMenu.visible = true
 
 func _on_check_button_pressed() -> void:
-	if CurrentState == PaintingState.Sabatoge:
-		CurrentState = PaintingState.Rest
-		PaintingSprite.texture = load(baseImgPath)
-		points += 50
-		SabatogeTimer.stop()
-	else:
-		points -= 50
+	match CurrentState:
+		PaintingState.Sabotage1:
+			handle_sabotage1()
+		PaintingState.Sabotage2:
+			handle_sabotage2()
+		PaintingState.Sabotage3:
+			handle_sabotage3()
+		PaintingState.Sabotage4:
+			handle_sabotage4()
 	$SabotageMenu.visible = false
 
+func handle_sabotage1():
+	var other_boxes := [
+		EyesCheckBox,
+		EyebrowsCheckBox,
+		MouthCheckBox,
+		MakeupCheckBox,
+		HairCheckBox,
+		HatCheckBox,
+		EarringCheckBox,
+		OuterWearCheckBox,
+		NeckWearCheckBox,
+		SkyCheckBox,
+		SeaCheckBox,
+		HouseCheckBox,
+		DecorationsCheckBox,
+		TopColorCheckBox,
+		HairColorCheckBox,
+		HatColorCheckBox
+	]
+
+	var any_other_pressed := false
+	for box in other_boxes:
+		if box.button_pressed:
+			any_other_pressed = true
+			break
+
+	var is_correct: bool = TopCheckBox.button_pressed and not any_other_pressed
+
+	points += 50 if is_correct else -50
+
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	SabatogeTimer.stop()
+
+func handle_sabotage2():
+	var other_boxes := [
+		EyesCheckBox,
+		EyebrowsCheckBox,
+		MouthCheckBox,
+		MakeupCheckBox,
+		HairCheckBox,
+		EarringCheckBox,
+		TopCheckBox,
+		OuterWearCheckBox,
+		NeckWearCheckBox,
+		SkyCheckBox,
+		SeaCheckBox,
+		HouseCheckBox,
+		DecorationsCheckBox,
+		TopColorCheckBox,
+		HairColorCheckBox,
+		HatColorCheckBox
+	]
+
+	var any_other_pressed := false
+	for box in other_boxes:
+		if box.button_pressed:
+			any_other_pressed = true
+			break
+
+	var is_correct: bool = HatCheckBox.button_pressed and not any_other_pressed
+
+	points += 50 if is_correct else -50
+
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	SabatogeTimer.stop()
+
+func handle_sabotage3():
+	var other_boxes := [
+		EyesCheckBox,
+		EyebrowsCheckBox,
+		MouthCheckBox,
+		MakeupCheckBox,
+		HairCheckBox,
+		HatCheckBox,
+		TopCheckBox,
+		OuterWearCheckBox,
+		NeckWearCheckBox,
+		SkyCheckBox,
+		SeaCheckBox,
+		HouseCheckBox,
+		DecorationsCheckBox,
+		TopColorCheckBox,
+		HairColorCheckBox,
+		HatColorCheckBox
+	]
+
+	var any_other_pressed := false
+	for box in other_boxes:
+		if box.button_pressed:
+			any_other_pressed = true
+			break
+
+	var is_correct: bool = EarringCheckBox.button_pressed and not any_other_pressed
+
+	points += 50 if is_correct else -50
+
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	SabatogeTimer.stop()
+
+func handle_sabotage4():
+	var other_boxes := [
+		EyesCheckBox,
+		MouthCheckBox,
+		MakeupCheckBox,
+		HairCheckBox,
+		HatCheckBox,
+		EarringCheckBox,
+		TopCheckBox,
+		OuterWearCheckBox,
+		NeckWearCheckBox,
+		SkyCheckBox,
+		SeaCheckBox,
+		HouseCheckBox,
+		DecorationsCheckBox,
+		TopColorCheckBox,
+		HairColorCheckBox,
+		HatColorCheckBox
+	]
+
+	var any_other_pressed := false
+	for box in other_boxes:
+		if box.button_pressed:
+			any_other_pressed = true
+			break
+
+	var is_correct: bool = EyebrowsCheckBox.button_pressed and not any_other_pressed
+
+	points += 50 if is_correct else -50
+
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	SabatogeTimer.stop()
 
 func _on_close_button_pressed() -> void:
 	$SabotageMenu.visible = false

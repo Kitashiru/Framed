@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	I prefer darker features
+if {HintNumber} == "2":
+	Matt Smith could use a transplant of these
+if {HintNumber} == "3":
+	Do talk about modern art, you would see my eyebrows dance to a discordant beat

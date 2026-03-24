@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	I have a late night craving of ice cream, but where do I put it?
+if {HintNumber} == "2":
+	Don’t call me a red flag, take me as a caution sign to slow down.
+if {HintNumber} == "3":
+	Be prepared for the witch hunt.

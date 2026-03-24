@@ -26,7 +26,11 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Intro": "res://addons/dialogic/Timelines/Intro.dtl",
-"PaintingOne-HintOne": "res://addons/dialogic/Timelines/PaintingOne-HintOne.dtl"
+"PaintingOneRest": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneRest.dtl",
+"PaintingOneSabotageFour": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageFour.dtl",
+"PaintingOneSabotageOne": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageOne.dtl",
+"PaintingOneSabotageThree": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageThree.dtl",
+"PaintingOneSabotageTwo": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageTwo.dtl"
 }
 layout/style_directory={
 "": "res://addons/dialogic/Resources/New_File.tres",
@@ -67,7 +71,10 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-variables={}
+variables={
+"HintNumber": "0"
+}
+glossary/default_case_sensitive=true
 
 [display]
 

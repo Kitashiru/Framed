@@ -1,0 +1,217 @@
+[gd_scene load_steps=21 format=3 uid="uid://d11ts5udqx56j"]
+
+[ext_resource type="Script" uid="uid://u2ls5x2y722n" path="res://Gameplay/DefaultNight/default_night.gd" id="1_skfct"]
+[ext_resource type="Texture2D" uid="uid://bfoparwhixlrb" path="res://Assets/UI Art/paletteclock.png" id="2_n0q5s"]
+[ext_resource type="PackedScene" uid="uid://duiv4ofq35rkr" path="res://Reuseable/UI/CameraSystem/CameraSystem.tscn" id="2_r08xn"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="3_8gfuu"]
+[ext_resource type="PackedScene" uid="uid://b0at61miyk1t" path="res://Gameplay/PaintingOne/PaintingOne.tscn" id="4_n0q5s"]
+[ext_resource type="Texture2D" uid="uid://kcmcil7f672u" path="res://Assets/UI Art/moon.png" id="4_p1mjg"]
+[ext_resource type="Texture2D" uid="uid://bvsbybbtifcgh" path="res://Assets/UI Art/pausebutton.png" id="5_xppl8"]
+[ext_resource type="Texture2D" uid="uid://djimn5quepyuo" path="res://Assets/UI Art/pausebutton_hover.png" id="6_3k7ij"]
+[ext_resource type="Texture2D" uid="uid://8012eujrhvfm" path="res://Assets/UI Art/settingsbutton.png" id="7_cs0on"]
+[ext_resource type="Texture2D" uid="uid://dvfq6omc1djxh" path="res://Assets/UI Art/settingsbutton_hover.png" id="8_m5vxv"]
+[ext_resource type="Texture2D" uid="uid://bk1qia6041eb7" path="res://Assets/UI Art/homebutton.png" id="9_3ky3r"]
+[ext_resource type="Texture2D" uid="uid://uufkhh8mk5f4" path="res://Assets/UI Art/homebutton_hover.png" id="10_y83oj"]
+[ext_resource type="Texture2D" uid="uid://ccces6f5a2s5m" path="res://Assets/UI Art/alert.png" id="11_m5vxv"]
+[ext_resource type="Texture2D" uid="uid://btqe2aowsh821" path="res://Assets/UI Art/walkie.png" id="12_y83oj"]
+[ext_resource type="Texture2D" uid="uid://lyb7ot8cfy6n" path="res://Assets/UI Art/walkie_hover.png" id="13_cs4fl"]
+[ext_resource type="Texture2D" uid="uid://dbbv0o3ln112o" path="res://Assets/UI Art/hints_indicator.png" id="14_venu3"]
+[ext_resource type="Texture2D" uid="uid://dyw6q8ffmgk24" path="res://Assets/fully_scrollable_bg.png" id="14_vxqca"]
+[ext_resource type="PackedScene" uid="uid://dpbyu42t7l5vq" path="res://Reuseable/UI/PauseScreen/PauseScreen.tscn" id="16_cs4fl"]
+[ext_resource type="PackedScene" uid="uid://1pcugm8wxtvo" path="res://Reuseable/SFXPlayer/SFXPlayer.tscn" id="19_ptb85"]
+[ext_resource type="AudioStream" uid="uid://cw1je6vsrdxkd" path="res://Assets/SFX/GlassCrack1.wav" id="20_8bf45"]
+
+[node name="DefaultNight" type="Node2D"]
+script = ExtResource("1_skfct")
+MinimumEventTime = 10
+MaximumEventTime = 20
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="Clock" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -259.0
+offset_top = 15.0
+offset_right = 218.0
+offset_bottom = 433.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_n0q5s")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 737.0
+offset_top = -438.0
+offset_right = 828.0
+offset_bottom = -377.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_8gfuu")
+theme_override_font_sizes/font_size = 60
+text = "12:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 849.0
+offset_top = -376.0
+offset_right = 940.0
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_8gfuu")
+theme_override_font_sizes/font_size = 30
+text = "PM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1829.0
+offset_top = 115.0
+offset_right = 1920.0
+offset_bottom = 206.0
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_p1mjg")
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1820.0
+offset_top = 52.0
+offset_right = 1920.0
+offset_bottom = 152.0
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("5_xppl8")
+texture_hover = ExtResource("6_3k7ij")
+
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1758.0
+offset_top = 24.0
+offset_right = 1858.0
+offset_bottom = 124.0
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("7_cs0on")
+texture_hover = ExtResource("8_m5vxv")
+
+[node name="HomeButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1708.0
+offset_top = 51.0
+offset_right = 1808.0
+offset_bottom = 151.0
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("9_3ky3r")
+texture_hover = ExtResource("10_y83oj")
+
+[node name="Right" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 1493.0
+offset_top = 274.0
+offset_right = 1788.0
+offset_bottom = 549.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_m5vxv")
+
+[node name="Left" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 203.0
+offset_top = 275.0
+offset_right = 498.0
+offset_bottom = 550.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_m5vxv")
+flip_h = true
+
+[node name="HintButton" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -255.0
+offset_right = 295.0
+offset_bottom = 225.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("12_y83oj")
+texture_hover = ExtResource("13_cs4fl")
+
+[node name="HintIndicator" type="TextureRect" parent="CanvasLayer"]
+offset_left = 154.0
+offset_top = 988.0
+offset_right = 264.0
+offset_bottom = 1100.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_venu3")
+
+[node name="Label" type="Label" parent="CanvasLayer/HintIndicator"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.283615
+theme_override_fonts/font = ExtResource("3_8gfuu")
+theme_override_font_sizes/font_size = 60
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SfxPlayer" parent="CanvasLayer" instance=ExtResource("19_ptb85")]
+stream = ExtResource("20_8bf45")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[node name="EventTimer" type="Timer" parent="."]
+
+[node name="FullyScrollableBg" type="Sprite2D" parent="."]
+position = Vector2(0.00012815, -1.43051e-05)
+scale = Vector2(1.506, 1.007)
+texture = ExtResource("14_vxqca")
+
+[node name="CameraSystem" parent="." instance=ExtResource("2_r08xn")]
+
+[node name="PaintingOne" parent="." instance=ExtResource("4_n0q5s")]
+
+[node name="PaintingTwo" parent="." instance=ExtResource("4_n0q5s")]
+position = Vector2(-1920, 0)
+
+[node name="PaintingThree" parent="." instance=ExtResource("4_n0q5s")]
+position = Vector2(1920, 0)
+
+[node name="PauseScreen" parent="." instance=ExtResource("16_cs4fl")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="visibility_changed" from="CanvasLayer/Right" to="." method="_on_right_visibility_changed"]
+[connection signal="visibility_changed" from="CanvasLayer/Left" to="." method="_on_left_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/HintButton" to="." method="_on_hint_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]

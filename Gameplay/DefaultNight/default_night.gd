@@ -20,6 +20,9 @@ var rng = RandomNumberGenerator.new()
 var CurrentTime = 12
 var LastUpdatedTime
 
+var HintsLeft = 3
+@onready var HintLabel = $CanvasLayer/HintIndicator/Label
+
 var score = 0
 var LastUpdatedScore
 @onready var ScoreLabel = $CanvasLayer/ScoreLabel
@@ -143,9 +146,27 @@ func _on_pause_button_pressed() -> void:
 
 
 func _on_hint_button_pressed() -> void:
-	Dialogic.start("PaintingOne-HintOne")
-	pass
-
+	if HintsLeft > 0:
+		var CurrentCamPos = CameraSystem.CurrentPosition
+	
+		if CurrentCamPos == 0: #Middle
+			if MiddlePainting.CurrentState == MiddlePainting.PaintingState.Sabotage1:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingOneSabotageOne")
+			elif MiddlePainting.CurrentState == MiddlePainting.PaintingState.Sabotage2:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingOneSabotageTwo")
+			elif MiddlePainting.CurrentState == MiddlePainting.PaintingState.Sabotage3:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingOneSabotageThree")
+			elif MiddlePainting.CurrentState == MiddlePainting.PaintingState.Sabotage4:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingOneSabotageFour")
+			else:
+				Dialogic.start("PaintingOneRest")
+		
+		HintsLeft -=1
+		HintLabel.text = str(HintsLeft)
 
 func _on_right_visibility_changed() -> void:
 	if RightNotice.visible == true:

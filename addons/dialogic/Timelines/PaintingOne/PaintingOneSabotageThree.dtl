@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	Hint 1
+if {HintNumber} == "2":
+	Hint 2
+if {HintNumber} == "3":
+	Hint 3
