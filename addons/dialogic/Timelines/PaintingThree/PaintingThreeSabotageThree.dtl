@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	I felt a cool breeze today
+if {HintNumber} == "2":
+	I might be sick with the pox, but I'm no chicken
+if {HintNumber} == "3":
+	 I am horrible at spotting things like Where’s Waldo. Seriously, he is one elusive fellow, even with stripes!

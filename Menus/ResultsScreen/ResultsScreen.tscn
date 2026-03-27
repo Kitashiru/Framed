@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5bk23wblcy0i"]
+[gd_scene load_steps=8 format=3 uid="uid://b5bk23wblcy0i"]
 
 [ext_resource type="Texture2D" uid="uid://blo1pduqrtpv0" path="res://Assets/UI Art/framing_results.png" id="1_d0mji"]
+[ext_resource type="Script" uid="uid://b7uph34a2ntcy" path="res://Menus/ResultsScreen/results_screen.gd" id="1_x4l00"]
 [ext_resource type="Texture2D" uid="uid://dy11bgm1aree" path="res://Assets/UI Art/score_frame.png" id="2_febek"]
 [ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="3_d84fy"]
 [ext_resource type="Texture2D" uid="uid://c7h5tmrw0v733" path="res://Assets/UI Art/framebutton.png" id="4_d84fy"]
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x4l00")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -120,7 +122,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d84fy")
 theme_override_font_sizes/font_size = 40
-text = "Idiling"
+text = "Idling"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ConditionContainer/VBoxContainer/HBoxContainer2"]
@@ -160,7 +162,7 @@ text = "4415"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="NextButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -177,7 +179,7 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_d84fy")
 texture_hover = ExtResource("5_x4l00")
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="NextButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -195,3 +197,5 @@ theme_override_font_sizes/font_size = 120
 text = "Next"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

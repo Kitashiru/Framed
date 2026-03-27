@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	I've might'eve told a fib about being a red flag...
+if {HintNumber} == "2":
+	No ser, when I wave in the air, it is a challenge, not a surrender
+if {HintNumber} == "3":
+	When I set my sails, my crew bow beneath me

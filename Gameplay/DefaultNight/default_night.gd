@@ -2,6 +2,10 @@ extends Node2D
 
 @onready var Self = $"."
 @onready var CameraSystem = $CameraSystem
+
+@onready var IntroMusic = $IntructionMusic
+@onready var MainMusic = $MainMusic
+
 @onready var LeftNotice = $CanvasLayer/Left
 @onready var RightNotice = $CanvasLayer/Right
 
@@ -10,37 +14,41 @@ extends Node2D
 @onready var RightPainting = $PaintingThree
 
 @onready var PauseScreen = $PauseScreen
+@onready var OptionsScreen = $OptionsScreen
+@onready var BacktoMenuScreen = $BackToMenu
 
 @onready var SFXPlayer = $CanvasLayer/SfxPlayer
+
+var IntroPlayed : bool = false
 
 var PaintingList = []
 
 var rng = RandomNumberGenerator.new()
 
-var CurrentTime = 12
+var CurrentTime = 1
 var LastUpdatedTime
 
 var HintsLeft = 3
 @onready var HintLabel = $CanvasLayer/HintIndicator/Label
 
 var score = 0
-var LastUpdatedScore
-@onready var ScoreLabel = $CanvasLayer/ScoreLabel
 
 @onready var TimeLabel = $CanvasLayer/Label
-@onready var AM_PM_Label = $CanvasLayer/Label2
 @onready var EventTimer = $EventTimer
 @export var MinimumEventTime:int
 @export var MaximumEventTime:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	IntroMusic.play()
+	MainMusic.volume_db = -80
 	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
 	PlayIntro()
 	var random_time = rng.randi_range(MinimumEventTime, MaximumEventTime)
 	EventTimer.wait_time = random_time
 	EventTimer.start()
 	PaintingList = [MiddlePainting, LeftPainting, RightPainting]
+
 
 func PlayIntro() -> void:
 	Dialogic.timeline_ended.connect(IntroEnded)
@@ -52,19 +60,22 @@ func IntroStarted():
 	
 func IntroEnded():
 	Self.process_mode = ProcessMode.PROCESS_MODE_INHERIT
+	if IntroPlayed == false:
+		fade_to_main()
+		IntroPlayed = true
+
+func fade_to_main():
+	MainMusic.play()
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(IntroMusic, "volume_db", -80, 2.0)
+	tween.tween_property(MainMusic, "volume_db", 0, 2.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if LastUpdatedTime != CurrentTime:
 		TimeLabel.text = ChangeTimeToString(CurrentTime)
 		LastUpdatedTime = CurrentTime
-	
-	if score != MiddlePainting.points + LeftPainting.points + RightPainting.points:
-		score = MiddlePainting.points + LeftPainting.points + RightPainting.points
-	
-	if score != LastUpdatedScore:
-		ScoreLabel.text = str(score)
-		LastUpdatedScore = score
 
 	for i in range(PaintingList.size()):
 		var painting = PaintingList[i]
@@ -129,13 +140,10 @@ func _on_event_timer_timeout() -> void:
 
 
 func _on_timer_timeout() -> void:
-	if CurrentTime == 12:
-		AM_PM_Label.text = "AM"
-	if CurrentTime == 12.5:
-		CurrentTime = 1
-	else:
 		CurrentTime += 0.5
 		if CurrentTime == 6:
+			GameData.CorrectGuesses = MiddlePainting.CorrectGuesses + LeftPainting.CorrectGuesses + RightPainting.CorrectGuesses
+			GameData.IncorrectGuesses =  MiddlePainting.IncorrectGuesses + LeftPainting.IncorrectGuesses + RightPainting.IncorrectGuesses
 			get_tree().change_scene_to_file("res://Menus/ResultsScreen/ResultsScreen.tscn")
 
 
@@ -165,6 +173,35 @@ func _on_hint_button_pressed() -> void:
 			else:
 				Dialogic.start("PaintingOneRest")
 		
+		if CurrentCamPos == 1: #left
+			if LeftPainting.CurrentState == LeftPainting.PaintingState.Sabotage1:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingTwoSabotageOne")
+			elif LeftPainting.CurrentState == LeftPainting.PaintingState.Sabotage2:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingTwoSabotageTwo")
+			elif LeftPainting.CurrentState == LeftPainting.PaintingState.Sabotage3:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingTwoSabotageThree")
+			elif LeftPainting.CurrentState == LeftPainting.PaintingState.Sabotage4:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingTwoSabotageFour")
+			else:
+				Dialogic.start("PaintingOneRest")
+		
+		if CurrentCamPos == 2: # Right
+			if RightPainting.CurrentState == RightPainting.PaintingState.Sabotage1:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingThreeSabotageOne")
+			elif RightPainting.CurrentState == RightPainting.PaintingState.Sabotage2:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingThreeSabotageTwo")
+			elif RightPainting.CurrentState == RightPainting.PaintingState.Sabotage3:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingThreeSabotageThree")
+			else:
+				Dialogic.start("PaintingOneRest")
+		
 		HintsLeft -=1
 		HintLabel.text = str(HintsLeft)
 
@@ -176,3 +213,20 @@ func _on_right_visibility_changed() -> void:
 func _on_left_visibility_changed() -> void:
 	if LeftNotice.visible == true:
 		SFXPlayer.PlayRandomSound()
+
+
+func _on_settings_button_pressed() -> void:
+	OptionsScreen.show()
+	Self.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+
+
+func _on_options_screen_resumed() -> void:
+	Self.process_mode = ProcessMode.PROCESS_MODE_INHERIT
+
+
+func _on_home_button_pressed() -> void:
+	BacktoMenuScreen.show()
+	Self.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+
+func _on_back_to_menu_resumed() -> void:
+	Self.process_mode = ProcessMode.PROCESS_MODE_INHERIT

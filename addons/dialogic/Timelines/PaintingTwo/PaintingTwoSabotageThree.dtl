@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	Is it just me, or is the room spinning right now?
+if {HintNumber} == "2":
+	The whole 80s bully toilet prank is childishly vintage
+if {HintNumber} == "3":
+	I sometimes like to think I am a wicked witch stirring her cauldron

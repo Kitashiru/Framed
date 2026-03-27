@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://5plukilqkxm4"]
+
+[ext_resource type="Script" uid="uid://54rc26od7oa3" path="res://Reuseable/UI/OptionsScreen/pause_screen.gd" id="1_i6nhf"]
+[ext_resource type="Shader" uid="uid://cnd4o5k65jqbr" path="res://Reuseable/UI/PauseScreen/PauseScreen.gdshader" id="2_6f0hq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfyfv"]
+shader = ExtResource("2_6f0hq")
+shader_parameter/lod = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_i6nhf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mfyfv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -62.0
+offset_right = 158.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Paused"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Click To resume"
+horizontal_alignment = 1

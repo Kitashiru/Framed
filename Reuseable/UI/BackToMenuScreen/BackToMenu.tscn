@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://o22lqpnvrhvo"]
+
+[ext_resource type="Shader" uid="uid://cnd4o5k65jqbr" path="res://Reuseable/UI/PauseScreen/PauseScreen.gdshader" id="1_0bhjp"]
+[ext_resource type="Script" uid="uid://dav4x3v7uc6rs" path="res://Reuseable/UI/BackToMenuScreen/back_to_menu.gd" id="1_u8og6"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="2_tfuno"]
+[ext_resource type="Texture2D" uid="uid://c7h5tmrw0v733" path="res://Assets/UI Art/framebutton.png" id="3_u8og6"]
+[ext_resource type="Texture2D" uid="uid://dus7x1tuxvt1s" path="res://Assets/UI Art/framebutton_hover.png" id="4_ver0m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfhe2"]
+shader = ExtResource("1_0bhjp")
+shader_parameter/lod = 3.0
+
+[node name="BackToMenu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_u8og6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qfhe2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -798.5
+offset_top = -44.0
+offset_right = 798.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tfuno")
+theme_override_font_sizes/font_size = 64
+text = "Are you sure you want to go back to the main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="YesButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_u8og6")
+texture_hover = ExtResource("4_ver0m")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/YesButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tfuno")
+theme_override_font_sizes/font_size = 64
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_u8og6")
+texture_hover = ExtResource("4_ver0m")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/NoButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tfuno")
+theme_override_font_sizes/font_size = 64
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

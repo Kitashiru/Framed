@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	I'm catchng some Z's...
+if {HintNumber} == "2":
+	I'm not asking you to change your patterns, but seriously, dude, you're freaking me out!
+if {HintNumber} == "3":
+	I'm running on pure adrenaline

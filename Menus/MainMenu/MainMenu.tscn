@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://obuwuemj7iju"]
+[gd_scene load_steps=13 format=3 uid="uid://obuwuemj7iju"]
 
 [ext_resource type="Script" uid="uid://etacj1hao2tc" path="res://Menus/MainMenu/main_menu.gd" id="1_0bhet"]
-[ext_resource type="Texture2D" uid="uid://b1jxqk2788oi2" path="res://Assets/UI Art/mainmenu_bg.png" id="2_k3ndf"]
+[ext_resource type="Texture2D" uid="uid://gnc4ynofxm7p" path="res://Assets/possible_main_menu.png" id="2_di3pw"]
 [ext_resource type="Texture2D" uid="uid://bpa4i4avlxyow" path="res://Assets/UI Art/Framed Logo2.png" id="3_ng4bt"]
 [ext_resource type="Texture2D" uid="uid://c7h5tmrw0v733" path="res://Assets/UI Art/framebutton.png" id="4_m3rfa"]
 [ext_resource type="Texture2D" uid="uid://dus7x1tuxvt1s" path="res://Assets/UI Art/framebutton_hover.png" id="5_di3pw"]
 [ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="6_ng4bt"]
 [ext_resource type="Texture2D" uid="uid://c2ygapntxyyc8" path="res://Assets/UI Art/options_popup_window.png" id="7_m3rfa"]
+[ext_resource type="AudioStream" uid="uid://b1b11efotfx4y" path="res://Assets/Music/Framed_Main_Menu_Theme_Looped.mp3" id="8_di3pw"]
 
 [sub_resource type="Animation" id="Animation_ng4bt"]
 resource_name = "Click"
@@ -151,7 +152,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_k3ndf")
+texture = ExtResource("2_di3pw")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
@@ -423,8 +424,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_di3pw")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_di3pw")
+autoplay = true
+bus = &"Music"
+
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/TextureRect2/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/TextureRect2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/TextureRect2/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/TextureRect2/BackButton" to="." method="_on_back_button_pressed"]

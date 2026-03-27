@@ -27,11 +27,11 @@ extends Node2D
 
 @onready var SabatogeTimer = $SabatogeTimer
 @onready var ResetTimer = $ResetTimer
-@onready var StateLabel = $StateLabel
 @onready var PaintingSprite = $Painting
 @onready var animationplayer = $AnimationPlayer
 
-var points = 0
+var CorrectGuesses = 0
+var IncorrectGuesses = 0
 
 var baseImgPath = "res://Assets/PaintingOne/base_girl_with_pearl_earring.png"
 var ImgFolderPath = "res://Assets/PaintingOne/"
@@ -57,7 +57,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	StateLabel.text = PaintingState.keys()[CurrentState]
 	pass
 
 
@@ -117,7 +116,10 @@ func _on_check_button_pressed() -> void:
 			handle_sabotage3()
 		PaintingState.Sabotage4:
 			handle_sabotage4()
+		_: 
+			IncorrectGuesses += 1
 	$SabotageMenu.visible = false
+	ClearCheckBoxes()
 
 func handle_sabotage1():
 	var other_boxes := [
@@ -147,7 +149,10 @@ func handle_sabotage1():
 
 	var is_correct: bool = TopCheckBox.button_pressed and not any_other_pressed
 
-	points += 50 if is_correct else -50
+	if is_correct:
+		CorrectGuesses += 1
+	else:
+		IncorrectGuesses += 1
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -181,7 +186,10 @@ func handle_sabotage2():
 
 	var is_correct: bool = HatCheckBox.button_pressed and not any_other_pressed
 
-	points += 50 if is_correct else -50
+	if is_correct:
+		CorrectGuesses += 1
+	else:
+		IncorrectGuesses += 1
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -215,7 +223,10 @@ func handle_sabotage3():
 
 	var is_correct: bool = EarringCheckBox.button_pressed and not any_other_pressed
 
-	points += 50 if is_correct else -50
+	if is_correct:
+		CorrectGuesses += 1
+	else:
+		IncorrectGuesses += 1
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -249,7 +260,10 @@ func handle_sabotage4():
 
 	var is_correct: bool = EyebrowsCheckBox.button_pressed and not any_other_pressed
 
-	points += 50 if is_correct else -50
+	if is_correct:
+		CorrectGuesses += 1
+	else:
+		IncorrectGuesses += 1
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -257,7 +271,7 @@ func handle_sabotage4():
 
 func _on_close_button_pressed() -> void:
 	$SabotageMenu.visible = false
-
+	ClearCheckBoxes()
 
 func _on_face_button_pressed() -> void:
 	animationplayer.play("RESET")
@@ -280,3 +294,26 @@ func _on_color_button_pressed() -> void:
 	animationplayer.play("RESET")
 	await animationplayer.animation_finished
 	animationplayer.play("ShowColorContainer")
+
+func ClearCheckBoxes():
+	var check_boxes := [
+		EyesCheckBox,
+		EyebrowsCheckBox,
+		MouthCheckBox,
+		MakeupCheckBox,
+		HairCheckBox,
+		HatCheckBox,
+		EarringCheckBox,
+		TopCheckBox,
+		OuterWearCheckBox,
+		NeckWearCheckBox,
+		SkyCheckBox,
+		SeaCheckBox,
+		HouseCheckBox,
+		DecorationsCheckBox,
+		TopColorCheckBox,
+		HairColorCheckBox,
+		HatColorCheckBox
+	]
+	for box in check_boxes:
+		box.button_pressed = false

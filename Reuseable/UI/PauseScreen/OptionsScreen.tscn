@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpbyu42t7l5vq"]
+
+[ext_resource type="Script" uid="uid://nl07giq2msjq" path="res://Reuseable/UI/PauseScreen/options_screen.gd" id="1_k8ccp"]
+[ext_resource type="Shader" uid="uid://cnd4o5k65jqbr" path="res://Reuseable/UI/PauseScreen/PauseScreen.gdshader" id="1_q31u1"]
+[ext_resource type="Texture2D" uid="uid://c2ygapntxyyc8" path="res://Assets/UI Art/options_popup_window.png" id="2_nphge"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="3_k8ccp"]
+[ext_resource type="Texture2D" uid="uid://c7h5tmrw0v733" path="res://Assets/UI Art/framebutton.png" id="4_bej3a"]
+[ext_resource type="Texture2D" uid="uid://dus7x1tuxvt1s" path="res://Assets/UI Art/framebutton_hover.png" id="5_u2vk5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfyfv"]
+shader = ExtResource("1_q31u1")
+shader_parameter/lod = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_k8ccp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mfyfv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -510.0
+offset_right = 413.0
+offset_bottom = 609.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.92)
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_nphge")
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.668
+offset_top = 31.3207
+offset_right = 127.332
+offset_bottom = 122.321
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_k8ccp")
+theme_override_font_sizes/font_size = 90
+text = "Options"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TextureRect2"]
+layout_mode = 0
+offset_left = 94.494
+offset_top = 270.924
+offset_right = 444.494
+offset_bottom = 503.924
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_k8ccp")
+theme_override_font_sizes/font_size = 60
+text = "Master Volume"
+
+[node name="Label2" type="Label" parent="VBoxContainer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_k8ccp")
+theme_override_font_sizes/font_size = 60
+text = "SFX Volume"
+
+[node name="Label3" type="Label" parent="VBoxContainer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_k8ccp")
+theme_override_font_sizes/font_size = 60
+text = "Music Volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer/TextureRect2"]
+z_index = 11
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 480.569
+offset_top = 277.188
+offset_right = 577.569
+offset_bottom = 293.188
+scale = Vector2(2, 2)
+max_value = 1.5
+step = 0.001
+ticks_on_borders = true
+
+[node name="SFXVolumeSlider" type="HSlider" parent="VBoxContainer/TextureRect2"]
+z_index = 11
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 480.569
+offset_top = 364.886
+offset_right = 577.569
+offset_bottom = 380.886
+scale = Vector2(2, 2)
+max_value = 1.5
+step = 0.001
+ticks_on_borders = true
+
+[node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer/TextureRect2"]
+z_index = 11
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 480.569
+offset_top = 452.584
+offset_right = 577.569
+offset_bottom = 468.584
+scale = Vector2(2, 2)
+max_value = 1.5
+step = 0.001
+ticks_on_borders = true
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer/TextureRect2"]
+layout_mode = 0
+offset_left = 321.279
+offset_top = 815.903
+offset_right = 694.279
+offset_bottom = 1016.9
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_bej3a")
+texture_hover = ExtResource("5_u2vk5")
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect2/BackButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_k8ccp")
+theme_override_font_sizes/font_size = 90
+text = "Resume"
+
+[connection signal="value_changed" from="VBoxContainer/TextureRect2/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TextureRect2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TextureRect2/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/TextureRect2/BackButton" to="." method="_on_back_button_pressed"]

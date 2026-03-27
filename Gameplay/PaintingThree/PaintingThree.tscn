@@ -1,0 +1,638 @@
+[gd_scene load_steps=26 format=3 uid="uid://ccwdfbvkdm5d7"]
+
+[ext_resource type="Script" uid="uid://cfgdjoertes67" path="res://Gameplay/PaintingThree/painting_three.gd" id="1_2o7h3"]
+[ext_resource type="Texture2D" uid="uid://b4ii2r4d3vc1p" path="res://Assets/BackroundRight.png" id="2_2o7h3"]
+[ext_resource type="Texture2D" uid="uid://b355ohjfbn4y2" path="res://Assets/PaintingThree/base_american_gothic.png" id="3_2o7h3"]
+[ext_resource type="Texture2D" uid="uid://dyy7mggcdwbkm" path="res://Assets/UI Art/checklist.png" id="4_xvvqm"]
+[ext_resource type="Texture2D" uid="uid://31kx4ppaswxm" path="res://Assets/UI Art/check_not_hovered.png" id="5_wbshx"]
+[ext_resource type="Texture2D" uid="uid://dwi05x3uq5kyt" path="res://Assets/UI Art/check_hovered.png" id="6_55mm7"]
+[ext_resource type="Texture2D" uid="uid://dm62px7g2ic6h" path="res://Assets/UI Art/cross_not_hovered.png" id="7_n7wib"]
+[ext_resource type="Texture2D" uid="uid://bci5n6pyr6jn3" path="res://Assets/UI Art/cross_hovered.png" id="8_rfwr6"]
+[ext_resource type="Texture2D" uid="uid://bwm5gtthochj" path="res://Assets/UI Art/tab_face.png" id="9_nyu1r"]
+[ext_resource type="Texture2D" uid="uid://c25lwqrwyqpy3" path="res://Assets/UI Art/tab_face_hover.png" id="10_wejld"]
+[ext_resource type="Texture2D" uid="uid://drlsvaoxy1uh" path="res://Assets/UI Art/tab_body.png" id="11_4wqr8"]
+[ext_resource type="Texture2D" uid="uid://dp2mwyv68sdsy" path="res://Assets/UI Art/tab_body_hover.png" id="12_50mux"]
+[ext_resource type="Texture2D" uid="uid://1e6jtg8qnhfi" path="res://Assets/UI Art/tab_bg.png" id="13_rdluv"]
+[ext_resource type="Texture2D" uid="uid://bgulnmy24x7pi" path="res://Assets/UI Art/tab_bg_hover.png" id="14_et0gw"]
+[ext_resource type="Texture2D" uid="uid://b3u5efm1ssew1" path="res://Assets/UI Art/tab_color.png" id="15_ckb52"]
+[ext_resource type="Texture2D" uid="uid://binp051buyp0f" path="res://Assets/UI Art/tab_color_hover.png" id="16_wyb3s"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="17_khmo5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckhph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8bbt"]
+size = Vector2(611, 814)
+
+[sub_resource type="Animation" id="Animation_vpoqd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SabotageMenu/FaceContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SabotageMenu/OutfitContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SabotageMenu/BackroundContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SabotageMenu/ColorContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oj0qg"]
+resource_name = "ShowBackroundContainer"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SabotageMenu/BackroundContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1lrd0"]
+resource_name = "ShowColorContainer"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SabotageMenu/ColorContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ckhph"]
+resource_name = "ShowFaceContainer"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SabotageMenu/FaceContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_418ro"]
+resource_name = "ShowOutfitContainer"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SabotageMenu/OutfitContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fxwy"]
+_data = {
+&"RESET": SubResource("Animation_vpoqd"),
+&"ShowBackroundContainer": SubResource("Animation_oj0qg"),
+&"ShowColorContainer": SubResource("Animation_1lrd0"),
+&"ShowFaceContainer": SubResource("Animation_ckhph"),
+&"ShowOutfitContainer": SubResource("Animation_418ro")
+}
+
+[node name="PaintingThree" type="Node2D"]
+script = ExtResource("1_2o7h3")
+
+[node name="SabatogeTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Backround" type="Sprite2D" parent="."]
+scale = Vector2(1.00628, 1.0084)
+texture = ExtResource("2_2o7h3")
+
+[node name="Painting" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_2o7h3")
+
+[node name="SabotageMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="SabotageMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="SabotageMenu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -461.0
+offset_top = -798.0
+offset_right = 152.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_xvvqm")
+
+[node name="CheckButton" type="TextureButton" parent="SabotageMenu"]
+offset_left = 1525.0
+offset_top = 930.0
+offset_right = 1675.0
+offset_bottom = 1080.0
+texture_normal = ExtResource("5_wbshx")
+texture_hover = ExtResource("6_55mm7")
+
+[node name="CloseButton" type="TextureButton" parent="SabotageMenu"]
+offset_left = 1687.0
+offset_top = 930.0
+offset_right = 1837.0
+offset_bottom = 1080.0
+texture_normal = ExtResource("7_n7wib")
+texture_hover = ExtResource("8_rfwr6")
+
+[node name="CategoryContainer" type="VBoxContainer" parent="SabotageMenu"]
+offset_left = 1326.0
+offset_top = 299.0
+offset_right = 1518.0
+offset_bottom = 1064.0
+scale = Vector2(0.75, 0.75)
+
+[node name="FaceButton" type="TextureButton" parent="SabotageMenu/CategoryContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_nyu1r")
+texture_hover = ExtResource("10_wejld")
+
+[node name="OutfitButton" type="TextureButton" parent="SabotageMenu/CategoryContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_4wqr8")
+texture_hover = ExtResource("12_50mux")
+
+[node name="BackroundButton" type="TextureButton" parent="SabotageMenu/CategoryContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_rdluv")
+texture_hover = ExtResource("14_et0gw")
+
+[node name="ColorButton" type="TextureButton" parent="SabotageMenu/CategoryContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_ckb52")
+texture_hover = ExtResource("16_wyb3s")
+
+[node name="Label" type="Label" parent="SabotageMenu"]
+offset_left = 1469.0
+offset_top = 301.0
+offset_right = 1908.0
+offset_bottom = 422.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 90
+text = "CheckList"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="SabotageMenu"]
+offset_left = 1512.0
+offset_top = 390.0
+offset_right = 1867.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Mark Everything That is Wrong"
+
+[node name="FaceContainer" type="Control" parent="SabotageMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FaceLabels" type="VBoxContainer" parent="SabotageMenu/FaceContainer"]
+layout_mode = 0
+offset_left = 1518.0
+offset_top = 430.0
+offset_right = 1705.0
+offset_bottom = 850.0
+
+[node name="Label" type="Label" parent="SabotageMenu/FaceContainer/FaceLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Eyes"
+
+[node name="Label2" type="Label" parent="SabotageMenu/FaceContainer/FaceLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Eyebrows"
+
+[node name="Label4" type="Label" parent="SabotageMenu/FaceContainer/FaceLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Mouth"
+
+[node name="Label6" type="Label" parent="SabotageMenu/FaceContainer/FaceLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Makeup"
+
+[node name="Label7" type="Label" parent="SabotageMenu/FaceContainer/FaceLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Hair"
+
+[node name="EyesCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 432.0
+offset_right = 1843.0
+offset_bottom = 456.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="EyebrowsCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 485.0
+offset_right = 1843.0
+offset_bottom = 509.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="MouthCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 538.0
+offset_right = 1843.0
+offset_bottom = 562.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="MakeupCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 590.0
+offset_right = 1843.0
+offset_bottom = 614.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="HairCheckBox" type="CheckBox" parent="SabotageMenu/FaceContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 643.0
+offset_right = 1843.0
+offset_bottom = 667.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="OutfitContainer" type="Control" parent="SabotageMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OutfitLabels" type="VBoxContainer" parent="SabotageMenu/OutfitContainer"]
+layout_mode = 0
+offset_left = 1518.0
+offset_top = 430.0
+offset_right = 1705.0
+offset_bottom = 850.0
+
+[node name="Label" type="Label" parent="SabotageMenu/OutfitContainer/OutfitLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Hat"
+
+[node name="Label2" type="Label" parent="SabotageMenu/OutfitContainer/OutfitLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Earring"
+
+[node name="Label3" type="Label" parent="SabotageMenu/OutfitContainer/OutfitLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Top"
+
+[node name="Label4" type="Label" parent="SabotageMenu/OutfitContainer/OutfitLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "OuterWear"
+
+[node name="Label5" type="Label" parent="SabotageMenu/OutfitContainer/OutfitLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Neckwear"
+
+[node name="HatCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 432.0
+offset_right = 1843.0
+offset_bottom = 456.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="EarringCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 485.0
+offset_right = 1843.0
+offset_bottom = 509.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="TopCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 538.0
+offset_right = 1843.0
+offset_bottom = 562.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="OuterWearCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 590.0
+offset_right = 1843.0
+offset_bottom = 614.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="NeckwearCheckBox" type="CheckBox" parent="SabotageMenu/OutfitContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 643.0
+offset_right = 1843.0
+offset_bottom = 667.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="BackroundContainer" type="Control" parent="SabotageMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackroundLabels" type="VBoxContainer" parent="SabotageMenu/BackroundContainer"]
+layout_mode = 0
+offset_left = 1518.0
+offset_top = 430.0
+offset_right = 1705.0
+offset_bottom = 850.0
+
+[node name="Label" type="Label" parent="SabotageMenu/BackroundContainer/BackroundLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Sky"
+
+[node name="Label2" type="Label" parent="SabotageMenu/BackroundContainer/BackroundLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Sea"
+
+[node name="Label4" type="Label" parent="SabotageMenu/BackroundContainer/BackroundLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "House"
+
+[node name="Label6" type="Label" parent="SabotageMenu/BackroundContainer/BackroundLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Decorations"
+
+[node name="SkyCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 432.0
+offset_right = 1843.0
+offset_bottom = 456.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="SeaCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 485.0
+offset_right = 1843.0
+offset_bottom = 509.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="HouseCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 538.0
+offset_right = 1843.0
+offset_bottom = 562.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="DecorationsCheckBox" type="CheckBox" parent="SabotageMenu/BackroundContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 590.0
+offset_right = 1843.0
+offset_bottom = 614.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="ColorContainer" type="Control" parent="SabotageMenu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorLabels" type="VBoxContainer" parent="SabotageMenu/ColorContainer"]
+layout_mode = 0
+offset_left = 1518.0
+offset_top = 430.0
+offset_right = 1705.0
+offset_bottom = 850.0
+
+[node name="Label" type="Label" parent="SabotageMenu/ColorContainer/ColorLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Top"
+
+[node name="Label2" type="Label" parent="SabotageMenu/ColorContainer/ColorLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Hair"
+
+[node name="Label4" type="Label" parent="SabotageMenu/ColorContainer/ColorLabels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.347817, 0.347817, 0.347817, 1)
+theme_override_fonts/font = ExtResource("17_khmo5")
+theme_override_font_sizes/font_size = 48
+text = "Hat"
+
+[node name="TopColorCheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 432.0
+offset_right = 1843.0
+offset_bottom = 456.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="HairColorCheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 485.0
+offset_right = 1843.0
+offset_bottom = 509.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="HatColorCheckBox" type="CheckBox" parent="SabotageMenu/ColorContainer"]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 538.0
+offset_right = 1843.0
+offset_bottom = 562.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckhph")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_f8bbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5fxwy")
+}
+
+[connection signal="timeout" from="SabatogeTimer" to="." method="_on_sabatoge_timer_timeout"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="pressed" from="SabotageMenu/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CategoryContainer/FaceButton" to="." method="_on_face_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CategoryContainer/OutfitButton" to="." method="_on_outfit_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CategoryContainer/BackroundButton" to="." method="_on_backround_button_pressed"]
+[connection signal="pressed" from="SabotageMenu/CategoryContainer/ColorButton" to="." method="_on_color_button_pressed"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

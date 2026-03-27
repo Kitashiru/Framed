@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://b0at61miyk1t"]
 
-[ext_resource type="Texture2D" uid="uid://olleavah8yen" path="res://Assets/ui_bakcground_mockup3.png" id="1_c78h2"]
 [ext_resource type="Script" uid="uid://db8fmd52ei7j6" path="res://Gameplay/PaintingOne/painting_one.gd" id="1_f8bbt"]
+[ext_resource type="Texture2D" uid="uid://db4g6i6uh0531" path="res://Assets/BackroundMiddle.png" id="2_ckhph"]
 [ext_resource type="Texture2D" uid="uid://ceoymb36v5dlb" path="res://Assets/PaintingOne/base_girl_with_pearl_earring.png" id="3_8ka1v"]
 [ext_resource type="Texture2D" uid="uid://dyy7mggcdwbkm" path="res://Assets/UI Art/checklist.png" id="4_adk4f"]
 [ext_resource type="Texture2D" uid="uid://31kx4ppaswxm" path="res://Assets/UI Art/check_not_hovered.png" id="5_qarid"]
@@ -151,39 +151,21 @@ _data = {
 script = ExtResource("1_f8bbt")
 
 [node name="SabatogeTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Backround" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(1.00628, 1.0084)
-texture = ExtResource("1_c78h2")
+texture = ExtResource("2_ckhph")
 
 [node name="Painting" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_8ka1v")
 
-[node name="StateLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -504.0
-offset_right = 63.0
-offset_bottom = -421.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 60
-text = "Rest"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SabotageMenu" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="SabotageMenu"]
 anchors_preset = 15

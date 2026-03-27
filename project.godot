@@ -13,11 +13,15 @@ config_version=5
 config/name="Framed"
 run/main_scene="uid://obuwuemj7iju"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="uid://btgfkf87di0yh"
+boot_splash/image="uid://dadgh3b5xbty4"
+config/icon="uid://widxi217gtjs"
+config/windows_native_icon="res://Assets/Framed_Game_Icon.ico"
+boot_splash/minimum_display_time=600
 
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+GameData="*res://ExtraScripts/GameData.gd"
 
 [dialogic]
 
@@ -30,7 +34,14 @@ directories/dtl_directory={
 "PaintingOneSabotageFour": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageFour.dtl",
 "PaintingOneSabotageOne": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageOne.dtl",
 "PaintingOneSabotageThree": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageThree.dtl",
-"PaintingOneSabotageTwo": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageTwo.dtl"
+"PaintingOneSabotageTwo": "res://addons/dialogic/Timelines/PaintingOne/PaintingOneSabotageTwo.dtl",
+"PaintingThreeSabotageOne": "res://addons/dialogic/Timelines/PaintingThree/PaintingThreeSabotageOne.dtl",
+"PaintingThreeSabotageThree": "res://addons/dialogic/Timelines/PaintingThree/PaintingThreeSabotageThree.dtl",
+"PaintingThreeSabotageTwo": "res://addons/dialogic/Timelines/PaintingThree/PaintingThreeSabotageTwo.dtl",
+"PaintingTwoSabotageFour": "res://addons/dialogic/Timelines/PaintingTwo/PaintingTwoSabotageFour.dtl",
+"PaintingTwoSabotageOne": "res://addons/dialogic/Timelines/PaintingTwo/PaintingTwoSabotageOne.dtl",
+"PaintingTwoSabotageThree": "res://addons/dialogic/Timelines/PaintingTwo/PaintingTwoSabotageThree.dtl",
+"PaintingTwoSabotageTwo": "res://addons/dialogic/Timelines/PaintingTwo/PaintingTwoSabotageTwo.dtl"
 }
 layout/style_directory={
 "": "res://addons/dialogic/Resources/New_File.tres",

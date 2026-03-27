@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	Happy Family, Happy Life
+if {HintNumber} == "2":
+	Such a bright and blinding smile...
+if {HintNumber} == "3":
+	Sweet Home Anamosa

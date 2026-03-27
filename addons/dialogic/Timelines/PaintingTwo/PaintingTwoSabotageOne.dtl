@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	A festive night!
+if {HintNumber} == "2":
+	I can't help, but scream in excitement! Skål!
+if {HintNumber} == "3":
+	Humple Borpnah!
