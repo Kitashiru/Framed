@@ -4,7 +4,6 @@ extends Node2D
 @onready var CameraSystem = $CameraSystem
 
 @onready var IntroMusic = $IntructionMusic
-@onready var MainMusic = $MainMusic
 
 @onready var LeftNotice = $CanvasLayer/Left
 @onready var RightNotice = $CanvasLayer/Right
@@ -40,6 +39,7 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MainMusic.stop() 
 	IntroMusic.play()
 	MainMusic.volume_db = -80
 	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -77,6 +77,13 @@ func _process(delta: float) -> void:
 		TimeLabel.text = ChangeTimeToString(CurrentTime)
 		LastUpdatedTime = CurrentTime
 
+	if CameraSystem.CurrentPosition == CameraSystem.Position.FarLeft or CameraSystem.CurrentPosition == CameraSystem.Position.FarRight:
+		$CanvasLayer/HintButton.visible = false
+		$CanvasLayer/HintIndicator.visible = false
+	else:
+		$CanvasLayer/HintButton.visible = true
+		$CanvasLayer/HintIndicator.visible = true
+
 	for i in range(PaintingList.size()):
 		var painting = PaintingList[i]
 
@@ -103,13 +110,13 @@ func _on_event_timer_timeout() -> void:
 		var random = rng.randi_range(1, 2)
 		if random == 1:
 			if LeftPainting.CurrentState == 0:
-				LeftPainting.ChangeToMischievous()
+				LeftPainting.setSabotage()
 				LeftNotice.visible = true
 				await get_tree().create_timer(2).timeout
 				LeftNotice.visible = false
 		if random == 2:
 			if RightPainting.CurrentState == 0:
-				RightPainting.ChangeToMischievous()
+				RightPainting.setSabotage()
 				RightNotice.visible = true
 				await get_tree().create_timer(2).timeout
 				RightNotice.visible = false
@@ -118,10 +125,10 @@ func _on_event_timer_timeout() -> void:
 		var random = rng.randi_range(1, 2) # 1=Middle 2=Right
 		if random == 1:
 			if MiddlePainting.CurrentState == 0:
-				MiddlePainting.ChangeToMischievous()
+				MiddlePainting.setSabotage()
 		else:
 			if RightPainting.CurrentState == 0:
-				RightPainting.ChangeToMischievous()
+				RightPainting.setSabotage()
 		RightNotice.visible = true
 		await get_tree().create_timer(2).timeout
 		RightNotice.visible = false
@@ -130,20 +137,69 @@ func _on_event_timer_timeout() -> void:
 		var random = rng.randi_range(1, 2) # 1=Middle 2=Left
 		if random == 1:
 			if MiddlePainting.CurrentState == 0:
-				MiddlePainting.ChangeToMischievous()
+				MiddlePainting.setSabotage()
 		else:
 			if LeftPainting.CurrentState == 0:
-				LeftPainting.ChangeToMischievous()
+				LeftPainting.setSabotage()
 		LeftNotice.visible = true
 		await get_tree().create_timer(2).timeout
 		LeftNotice.visible = false
 
+	elif CurrentCamPos == 3: #FarLeft
+		var random = rng.randi_range(1, 3) # 1=Left 2=Middle 3=Right
+		
+		if random == 1:
+			if LeftPainting.CurrentState == 0:
+				LeftPainting.setSabotage()
+				RightNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				RightNotice.visible = false
+		
+		elif random == 2:
+			if MiddlePainting.CurrentState == 0:
+				MiddlePainting.setSabotage()
+				RightNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				RightNotice.visible = false
+		
+		else:
+			if RightPainting.CurrentState == 0:
+				RightPainting.setSabotage()
+				RightNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				RightNotice.visible = false
+
+
+	elif CurrentCamPos == 4: #FarRight
+		var random = rng.randi_range(1, 3) # 1=Left 2=Middle 3=Right
+		
+		if random == 1:
+			if LeftPainting.CurrentState == 0:
+				LeftPainting.setSabotage()
+				LeftNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				LeftNotice.visible = false
+		
+		elif random == 2:
+			if MiddlePainting.CurrentState == 0:
+				MiddlePainting.setSabotage()
+				LeftNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				LeftNotice.visible = false
+		
+		else:
+			if RightPainting.CurrentState == 0:
+				RightPainting.setSabotage()
+				LeftNotice.visible = true
+				await get_tree().create_timer(2).timeout
+				LeftNotice.visible = false
 
 func _on_timer_timeout() -> void:
 		CurrentTime += 0.5
 		if CurrentTime == 6:
 			GameData.CorrectGuesses = MiddlePainting.CorrectGuesses + LeftPainting.CorrectGuesses + RightPainting.CorrectGuesses
 			GameData.IncorrectGuesses =  MiddlePainting.IncorrectGuesses + LeftPainting.IncorrectGuesses + RightPainting.IncorrectGuesses
+			GameData.MissedSabotages = MiddlePainting.MissedSabotages + LeftPainting.MissedSabotages + RightPainting.MissedSabotages
 			get_tree().change_scene_to_file("res://Menus/ResultsScreen/ResultsScreen.tscn")
 
 
@@ -199,6 +255,9 @@ func _on_hint_button_pressed() -> void:
 			elif RightPainting.CurrentState == RightPainting.PaintingState.Sabotage3:
 				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
 				Dialogic.start("PaintingThreeSabotageThree")
+			elif RightPainting.CurrentState == RightPainting.PaintingState.Sabotage4:
+				Dialogic.VAR.HintNumber = str(rng.randi_range(1, 3))
+				Dialogic.start("PaintingThreeSabotageFour")
 			else:
 				Dialogic.start("PaintingOneRest")
 		

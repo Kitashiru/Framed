@@ -26,12 +26,14 @@ extends Node2D
 @onready var HatColorCheckBox = $SabotageMenu/ColorContainer/HatColorCheckBox
 
 @onready var SabatogeTimer = $SabatogeTimer
+@onready var SabatogeResetTimer = $SabotageResetTimer
 @onready var ResetTimer = $ResetTimer
 @onready var PaintingSprite = $Painting
 @onready var animationplayer = $AnimationPlayer
 
 var CorrectGuesses = 0
 var IncorrectGuesses = 0
+var MissedSabotages = 0
 
 var baseImgPath = "res://Assets/PaintingTwo/base_scream_painting.png"
 var ImgFolderPath = "res://Assets/PaintingTwo/"
@@ -100,7 +102,7 @@ func setSabotage():
 	elif SabotageNumber == 4:
 		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_scream_painting.png")
 		CurrentState = PaintingState.Sabotage4
-
+	SabatogeResetTimer.start()
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
 		#print("2D object clicked!")
@@ -118,6 +120,7 @@ func _on_check_button_pressed() -> void:
 			handle_sabotage4()
 		_: 
 			IncorrectGuesses += 1
+	SabatogeResetTimer.stop()
 	$SabotageMenu.visible = false
 	ClearCheckBoxes()
 
@@ -316,3 +319,10 @@ func ClearCheckBoxes():
 	]
 	for box in check_boxes:
 		box.button_pressed = false
+
+
+func _on_sabotage_reset_timer_timeout() -> void:
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	MissedSabotages += 1
+	SabatogeResetTimer.stop()

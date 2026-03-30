@@ -1,0 +1,235 @@
+[gd_scene load_steps=21 format=3 uid="uid://c1pswfjmlg843"]
+
+[ext_resource type="Texture2D" uid="uid://ce6yeqrk4cgov" path="res://Assets/SafeScreen/safe_box_background.png" id="1_1p5dw"]
+[ext_resource type="Script" uid="uid://dwekkuadg5wvq" path="res://Gameplay/Safe/safe_screen.gd" id="1_2ibjg"]
+[ext_resource type="Texture2D" uid="uid://b75d0maqwn3vx" path="res://Assets/SafeScreen/safe_box_transp.png" id="3_1g472"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="4_d8yif"]
+[ext_resource type="Texture2D" uid="uid://d4bbtkgodjcy4" path="res://Assets/SafeScreen/girl_with_pearl_book.png" id="5_1g472"]
+[ext_resource type="Texture2D" uid="uid://b560ru0mpqnka" path="res://Assets/UI Art/next_painting_button.png" id="6_d8yif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuhvw"]
+size = Vector2(48, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkeyw"]
+size = Vector2(60, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jy2b"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_liuqe"]
+size = Vector2(48, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riemd"]
+size = Vector2(60, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4u0d"]
+size = Vector2(50, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmc53"]
+size = Vector2(48, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ec05"]
+size = Vector2(60, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuq3g"]
+size = Vector2(50, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyo4q"]
+size = Vector2(48, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjboc"]
+size = Vector2(60, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qry6h"]
+size = Vector2(50, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1g472"]
+size = Vector2(569, 193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8yif"]
+size = Vector2(74, 92)
+
+[node name="SafeScreen" type="Node2D"]
+script = ExtResource("1_2ibjg")
+
+[node name="Backround" type="Sprite2D" parent="."]
+scale = Vector2(1.00628, 1.0084)
+texture = ExtResource("1_1p5dw")
+
+[node name="Safe" type="Area2D" parent="."]
+
+[node name="SafeSprite" type="Sprite2D" parent="Safe"]
+texture = ExtResource("3_1g472")
+
+[node name="CodeLable" type="Label" parent="Safe"]
+offset_left = -49.0
+offset_top = -68.0
+offset_right = 121.0
+offset_bottom = -23.0
+theme_override_fonts/font = ExtResource("4_d8yif")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Key1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key1"]
+position = Vector2(-25, 34)
+shape = SubResource("RectangleShape2D_cuhvw")
+
+[node name="Key2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key2"]
+position = Vector2(34, 34)
+shape = SubResource("RectangleShape2D_xkeyw")
+
+[node name="Key3" type="Area2D" parent="."]
+position = Vector2(120, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key3"]
+position = Vector2(-24, 34)
+shape = SubResource("RectangleShape2D_3jy2b")
+
+[node name="Key4" type="Area2D" parent="."]
+position = Vector2(0, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key4"]
+position = Vector2(-25, 35)
+shape = SubResource("RectangleShape2D_liuqe")
+
+[node name="Key5" type="Area2D" parent="."]
+position = Vector2(0, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key5"]
+position = Vector2(34, 35)
+shape = SubResource("RectangleShape2D_riemd")
+
+[node name="Key6" type="Area2D" parent="."]
+position = Vector2(120, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key6"]
+position = Vector2(-24, 35)
+shape = SubResource("RectangleShape2D_r4u0d")
+
+[node name="Key7" type="Area2D" parent="."]
+position = Vector2(120, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key7"]
+position = Vector2(-145, 90.5)
+shape = SubResource("RectangleShape2D_vmc53")
+
+[node name="Key8" type="Area2D" parent="."]
+position = Vector2(173, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key8"]
+position = Vector2(-139, 90.5)
+shape = SubResource("RectangleShape2D_6ec05")
+
+[node name="Key9" type="Area2D" parent="."]
+position = Vector2(240, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key9"]
+position = Vector2(-144, 90.5)
+shape = SubResource("RectangleShape2D_iuq3g")
+
+[node name="BackSpace" type="Area2D" parent="."]
+position = Vector2(120, 108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackSpace"]
+position = Vector2(-145, 92.5)
+shape = SubResource("RectangleShape2D_wyo4q")
+
+[node name="Key0" type="Area2D" parent="."]
+position = Vector2(173, 108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key0"]
+position = Vector2(-139, 92.5)
+shape = SubResource("RectangleShape2D_cjboc")
+
+[node name="Enter" type="Area2D" parent="."]
+position = Vector2(240, 108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter"]
+position = Vector2(-144, 92.5)
+shape = SubResource("RectangleShape2D_qry6h")
+
+[node name="Book" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Book"]
+position = Vector2(2.5, 320.5)
+shape = SubResource("RectangleShape2D_1g472")
+
+[node name="PaintingInfo" type="TextureRect" parent="."]
+visible = false
+offset_left = -966.0
+offset_top = -544.0
+offset_right = 954.0
+offset_bottom = 536.0
+texture = ExtResource("5_1g472")
+
+[node name="RightButton" type="TextureButton" parent="PaintingInfo"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -769.0
+offset_top = -42.0
+offset_right = -668.0
+offset_bottom = 84.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("6_d8yif")
+
+[node name="LeftButton" type="TextureButton" parent="PaintingInfo"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1243.0
+offset_top = -42.0
+offset_right = -1142.0
+offset_bottom = 84.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("6_d8yif")
+flip_h = true
+
+[node name="Label" type="Label" parent="PaintingInfo"]
+layout_mode = 0
+offset_left = 1201.0
+offset_top = 106.0
+offset_right = 1245.0
+offset_bottom = 197.0
+theme_override_fonts/font = ExtResource("4_d8yif")
+theme_override_font_sizes/font_size = 90
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClosePaintingInfo" type="Area2D" parent="PaintingInfo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaintingInfo/ClosePaintingInfo"]
+position = Vector2(1225, 149)
+shape = SubResource("RectangleShape2D_d8yif")
+
+[connection signal="input_event" from="Key1" to="." method="_on_key_1_input_event"]
+[connection signal="input_event" from="Key2" to="." method="_on_key_2_input_event"]
+[connection signal="input_event" from="Key3" to="." method="_on_key_3_input_event"]
+[connection signal="input_event" from="Key4" to="." method="_on_key_4_input_event"]
+[connection signal="input_event" from="Key5" to="." method="_on_key_5_input_event"]
+[connection signal="input_event" from="Key6" to="." method="_on_key_6_input_event"]
+[connection signal="input_event" from="Key7" to="." method="_on_key_7_input_event"]
+[connection signal="input_event" from="Key8" to="." method="_on_key_8_input_event"]
+[connection signal="input_event" from="Key9" to="." method="_on_key_9_input_event"]
+[connection signal="input_event" from="BackSpace" to="." method="_on_back_space_input_event"]
+[connection signal="input_event" from="Key0" to="." method="_on_key_0_input_event"]
+[connection signal="input_event" from="Enter" to="." method="_on_enter_input_event"]
+[connection signal="input_event" from="Book" to="." method="_on_book_input_event"]
+[connection signal="pressed" from="PaintingInfo/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="PaintingInfo/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="input_event" from="PaintingInfo/ClosePaintingInfo" to="." method="_on_close_painting_info_input_event"]

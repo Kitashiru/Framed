@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://chp14kxgg7orf"]
+
+[ext_resource type="Script" uid="uid://lu10r0nytcfv" path="res://Gameplay/Note/note.gd" id="1_6q47x"]
+[ext_resource type="Texture2D" uid="uid://b2a5u6c85v8ji" path="res://Assets/NoteScreen/security_desk_with_note.png" id="2_i56dp"]
+[ext_resource type="Shader" uid="uid://cnd4o5k65jqbr" path="res://Reuseable/UI/PauseScreen/PauseScreen.gdshader" id="3_jgs7w"]
+[ext_resource type="Texture2D" uid="uid://bpb27d22opqq7" path="res://Assets/NoteScreen/security_desk_note.png" id="4_i56dp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuain"]
+size = Vector2(1357.97, 709.083)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w04vn"]
+shader = ExtResource("3_jgs7w")
+shader_parameter/lod = 3.0
+
+[node name="Note" type="Node2D"]
+script = ExtResource("1_6q47x")
+
+[node name="Backround" type="Sprite2D" parent="."]
+scale = Vector2(1.00628, 1.0084)
+texture = ExtResource("2_i56dp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-216.657, 28.768)
+rotation = -0.219719
+scale = Vector2(0.685927, 1.56733)
+skew = -0.312791
+shape = SubResource("RectangleShape2D_cuain")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_w04vn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_i56dp")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

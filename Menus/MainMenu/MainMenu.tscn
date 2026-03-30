@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://obuwuemj7iju"]
+[gd_scene load_steps=14 format=3 uid="uid://obuwuemj7iju"]
 
 [ext_resource type="Script" uid="uid://etacj1hao2tc" path="res://Menus/MainMenu/main_menu.gd" id="1_0bhet"]
 [ext_resource type="Texture2D" uid="uid://gnc4ynofxm7p" path="res://Assets/possible_main_menu.png" id="2_di3pw"]
@@ -87,6 +87,58 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(421, 224)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/CreditContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v4q0f"]
+resource_name = "ShowCredits"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(421, 224), Vector2(421, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CreditContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_di3pw"]
 resource_name = "ShowOptions"
@@ -98,7 +150,7 @@ tracks/0/path = NodePath("CanvasLayer/TextureRect2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.466667, 0.5),
+"times": PackedFloat32Array(0.4667, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -132,6 +184,7 @@ tracks/2/keys = {
 _data = {
 &"Click": SubResource("Animation_ng4bt"),
 &"RESET": SubResource("Animation_m3rfa"),
+&"ShowCredits": SubResource("Animation_v4q0f"),
 &"ShowOptions": SubResource("Animation_di3pw")
 }
 
@@ -419,6 +472,200 @@ theme_override_fonts/font = ExtResource("6_ng4bt")
 theme_override_font_sizes/font_size = 90
 text = "Back"
 
+[node name="CreditContainer" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -712.0
+offset_right = 676.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.740788, 0.638556)
+texture = ExtResource("7_m3rfa")
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.668
+offset_top = 31.3207
+offset_right = 127.332
+offset_bottom = 122.321
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 90
+text = "Credits"
+
+[node name="BackFromCreditsButton" type="TextureButton" parent="CanvasLayer/CreditContainer"]
+layout_mode = 0
+offset_left = 442.772
+offset_top = 814.337
+offset_right = 815.772
+offset_bottom = 1015.34
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_m3rfa")
+texture_hover = ExtResource("5_di3pw")
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditContainer/BackFromCreditsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 90
+text = "Back"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CreditContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -459.5
+offset_top = -288.5
+offset_right = 459.5
+offset_bottom = 288.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CreditContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Arriety"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Kirble"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Jack"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Koi"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Los"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Kitashiru"
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "Wonji"
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/CreditContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "game design, narrative design"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "project management"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "video production, sound design"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "art"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "ui"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "programming"
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/CreditContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_ng4bt")
+theme_override_font_sizes/font_size = 60
+text = "music, sound design"
+vertical_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_di3pw")
@@ -437,3 +684,4 @@ bus = &"Music"
 [connection signal="value_changed" from="CanvasLayer/TextureRect2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/TextureRect2/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/TextureRect2/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CreditContainer/BackFromCreditsButton" to="." method="_on_back_from_credits_button_pressed"]

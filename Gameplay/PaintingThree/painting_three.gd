@@ -26,12 +26,14 @@ extends Node2D
 @onready var HatColorCheckBox = $SabotageMenu/ColorContainer/HatColorCheckBox
 
 @onready var SabatogeTimer = $SabatogeTimer
+@onready var SabatogeResetTimer = $SabotageResetTimer
 @onready var ResetTimer = $ResetTimer
 @onready var PaintingSprite = $Painting
 @onready var animationplayer = $AnimationPlayer
 
 var CorrectGuesses = 0
 var IncorrectGuesses = 0
+var MissedSabotages = 0
 
 var baseImgPath = "res://Assets/PaintingThree/base_american_gothic.png"
 var ImgFolderPath = "res://Assets/PaintingThree/"
@@ -44,6 +46,7 @@ enum PaintingState{
 	Sabotage1,
 	Sabotage2,
 	Sabotage3,
+	Sabotage4
 }
 
 var CurrentState = PaintingState.Rest
@@ -86,7 +89,7 @@ func _on_sabatoge_timer_timeout() -> void:
 	SabatogeTimer.stop()
 
 func setSabotage():
-	var SabotageNumber = rng.randi_range(1, 3)
+	var SabotageNumber = rng.randi_range(1, 4)
 	if SabotageNumber == 1:
 		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_american_gothic.png")
 		CurrentState = PaintingState.Sabotage1
@@ -96,6 +99,10 @@ func setSabotage():
 	elif SabotageNumber == 3:
 		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_american_gothic.png")
 		CurrentState = PaintingState.Sabotage3
+	elif SabotageNumber == 4:
+		PaintingSprite.texture = load(ImgFolderPath + "sab" + str(SabotageNumber) + "_american_gothic.png")
+		CurrentState = PaintingState.Sabotage4
+	SabatogeResetTimer.start()
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
@@ -110,9 +117,12 @@ func _on_check_button_pressed() -> void:
 			handle_sabotage2()
 		PaintingState.Sabotage3:
 			handle_sabotage3()
+		PaintingState.Sabotage4:
+			handle_sabotage4()
 		_: 
 			IncorrectGuesses += 1
 	$SabotageMenu.visible = false
+	SabatogeResetTimer.stop()
 	ClearCheckBoxes()
 
 func handle_sabotage1():
@@ -224,6 +234,38 @@ func handle_sabotage3():
 	PaintingSprite.texture = load(baseImgPath)
 	SabatogeTimer.stop()
 
+func handle_sabotage4():
+	var other_boxes := [
+		EyesCheckBox,
+		EyebrowsCheckBox,
+		MouthCheckBox,
+		HatCheckBox,
+		EarringCheckBox,
+		TopCheckBox,
+		OuterWearCheckBox,
+		SkyCheckBox,
+		SeaCheckBox,
+		DecorationsCheckBox,
+		TopColorCheckBox,
+		HatColorCheckBox
+	]
+
+	var any_other_pressed := false
+	for box in other_boxes:
+		if box.button_pressed:
+			any_other_pressed = true
+			break
+
+	var is_correct: bool = HouseCheckBox.button_pressed and MakeupCheckBox.button_pressed and HairCheckBox.button_pressed and NeckWearCheckBox.button_pressed and HairColorCheckBox.button_pressed and not any_other_pressed
+
+	if is_correct:
+		CorrectGuesses += 1
+	else:
+		IncorrectGuesses += 1
+
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	SabatogeTimer.stop()
 
 func _on_close_button_pressed() -> void:
 	$SabotageMenu.visible = false
@@ -273,3 +315,10 @@ func ClearCheckBoxes():
 	]
 	for box in check_boxes:
 		box.button_pressed = false
+
+
+func _on_sabotage_reset_timer_timeout() -> void:
+	CurrentState = PaintingState.Rest
+	PaintingSprite.texture = load(baseImgPath)
+	MissedSabotages += 1
+	SabatogeResetTimer.stop()

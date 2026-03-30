@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhwt7tumniuye"]
+
+[ext_resource type="Script" uid="uid://viqdsexs7fln" path="res://Menus/GoodEnding/good_ending.gd" id="1_826up"]
+[ext_resource type="Texture2D" uid="uid://bk4nuhdi7ym21" path="res://Assets/Endings/GoodEnding.png" id="1_nljxe"]
+[ext_resource type="FontFile" uid="uid://bl2mgm11h2jrc" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="2_826up"]
+[ext_resource type="AudioStream" uid="uid://b6g688m1arp5b" path="res://Assets/Music/Framed_Good_Results.mp3" id="4_3fibi"]
+
+[node name="GoodEnding" type="Node2D"]
+script = ExtResource("1_826up")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nljxe")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -185.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_826up")
+theme_override_font_sizes/font_size = 90
+text = "Click To Return 
+To Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoodResultMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3fibi")
+autoplay = true
+bus = &"Music"

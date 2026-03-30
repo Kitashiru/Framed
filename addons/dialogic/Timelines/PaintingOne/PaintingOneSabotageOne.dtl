@@ -1,6 +1,6 @@
 if {HintNumber} == "1":
-	Hint 1
+	Damn it, I ruined my laundry, now my colors are mixed up.
 if {HintNumber} == "2":
-	Hint 2
+	You've shown your true colors.
 if {HintNumber} == "3":
-	Hint 3
+	Did my beautiful visage streak through your mind?

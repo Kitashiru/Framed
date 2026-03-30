@@ -1,4 +1,5 @@
 extends Node
 
-var CorrectGuesses = 3
-var IncorrectGuesses = 2
+var CorrectGuesses = 0
+var IncorrectGuesses = 0
+var MissedSabotages = 0

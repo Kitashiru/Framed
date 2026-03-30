@@ -9,47 +9,78 @@ extends Node2D
 var CamMiddlePos = Vector2(0.0, 0.0)
 var CamLeftPos = Vector2(-1920.0, 0.0)
 var CamRightPos = Vector2(1920.0, 0.0)
+var CamFarRightPos = Vector2(4000.0, 0.0)
+var CamFarLeftPos = Vector2(-4000.0, 0.0)
 
-
-var CurrentPosition = Position.Middle
 enum Position {
 	Middle,
 	Left,
-	Right
+	Right,
+	FarLeft,
+	FarRight
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var CurrentPosition = Position.Middle
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if CurrentPosition == Position.Left:
+	if CurrentPosition == Position.FarLeft:
 		LeftButton.visible = false
 		RightButton.visible = true
-	elif CurrentPosition == Position.Right:
+		
+	elif CurrentPosition == Position.FarRight:
 		RightButton.visible = false
 		LeftButton.visible = true
+		
 	else:
-		RightButton.visible = true
 		LeftButton.visible = true
+		RightButton.visible = true
 
 
 func _on_right_button_pressed() -> void:
-	if CurrentPosition == Position.Middle:
-		camera.position = CamRightPos
-		CurrentPosition = Position.Right
-	if CurrentPosition == Position.Left:
-		camera.position = CamMiddlePos
-		CurrentPosition = Position.Middle
+	match CurrentPosition:
+		Position.FarLeft:
+			$CanvasLayer.show()
+			camera.position = CamLeftPos
+			CurrentPosition = Position.Left
+			await get_tree().create_timer(1).timeout
+			$CanvasLayer.hide()
+			
+		Position.Left:
+			camera.position = CamMiddlePos
+			CurrentPosition = Position.Middle
+			
+		Position.Middle:
+			camera.position = CamRightPos
+			CurrentPosition = Position.Right
+			
+		Position.Right:
+			$CanvasLayer.show()
+			camera.position = CamFarRightPos
+			CurrentPosition = Position.FarRight
+			await get_tree().create_timer(1).timeout
+			$CanvasLayer.hide()
 
 
 func _on_left_button_pressed() -> void:
-		if CurrentPosition == Position.Middle:
-			camera.position = CamLeftPos
-			CurrentPosition = Position.Left
-		
-		if CurrentPosition == Position.Right:
+	match CurrentPosition:
+		Position.FarRight:
+			$CanvasLayer.show()
+			camera.position = CamRightPos
+			CurrentPosition = Position.Right
+			await get_tree().create_timer(1).timeout
+			$CanvasLayer.hide()
+			
+		Position.Right:
 			camera.position = CamMiddlePos
 			CurrentPosition = Position.Middle
+			
+		Position.Middle:
+			camera.position = CamLeftPos
+			CurrentPosition = Position.Left
+			
+		Position.Left:
+			$CanvasLayer.show()
+			camera.position = CamFarLeftPos
+			CurrentPosition = Position.FarLeft
+			await get_tree().create_timer(1).timeout
+			$CanvasLayer.hide()

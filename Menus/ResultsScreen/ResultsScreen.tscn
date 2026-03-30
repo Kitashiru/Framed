@@ -87,6 +87,20 @@ theme_override_fonts/font = ExtResource("3_d84fy")
 theme_override_font_sizes/font_size = 40
 text = "- 0"
 
+[node name="MissedSabotageCount" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "Missed Sabotages: 0"
+
+[node name="MissedSabotageScore" type="Label" parent="ConditionContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d84fy")
+theme_override_font_sizes/font_size = 40
+text = "- 0"
+
 [node name="Label2" type="Label" parent="ConditionContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

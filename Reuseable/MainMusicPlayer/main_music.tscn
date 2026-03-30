@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://3yiqgegl14of"]
+
+[ext_resource type="AudioStream" uid="uid://0ha3mnwle5qm" path="res://Assets/Music/Framed_Main3_Looped.mp3" id="1_lslj3"]
+
+[node name="MainMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_lslj3")
+bus = &"Music"

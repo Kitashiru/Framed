@@ -1,0 +1,6 @@
+if {HintNumber} == "1":
+	Rocking black never looked so easy
+if {HintNumber} == "2":
+	Your outside match my insides when I smoke
+if {HintNumber} == "3":
+	Forced to be siblings, destined to be a middle schooler's phase

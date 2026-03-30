@@ -627,6 +627,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_5fxwy")
 }
 
+[node name="SabotageResetTimer" type="Timer" parent="."]
+wait_time = 80.0
+
 [connection signal="timeout" from="SabatogeTimer" to="." method="_on_sabatoge_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="pressed" from="SabotageMenu/CheckButton" to="." method="_on_check_button_pressed"]
@@ -636,3 +639,4 @@ libraries = {
 [connection signal="pressed" from="SabotageMenu/CategoryContainer/BackroundButton" to="." method="_on_backround_button_pressed"]
 [connection signal="pressed" from="SabotageMenu/CategoryContainer/ColorButton" to="." method="_on_color_button_pressed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="timeout" from="SabotageResetTimer" to="." method="_on_sabotage_reset_timer_timeout"]

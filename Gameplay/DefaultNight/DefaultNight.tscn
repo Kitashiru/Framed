@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d11ts5udqx56j"]
+[gd_scene load_steps=27 format=3 uid="uid://d11ts5udqx56j"]
 
 [ext_resource type="Script" uid="uid://u2ls5x2y722n" path="res://Gameplay/DefaultNight/default_night.gd" id="1_skfct"]
 [ext_resource type="Texture2D" uid="uid://bfoparwhixlrb" path="res://Assets/UI Art/paletteclock.png" id="2_n0q5s"]
@@ -23,8 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://ccwdfbvkdm5d7" path="res://Gameplay/PaintingThree/PaintingThree.tscn" id="21_flcrp"]
 [ext_resource type="PackedScene" uid="uid://5plukilqkxm4" path="res://Reuseable/UI/OptionsScreen/PauseScreen.tscn" id="23_ywgmh"]
 [ext_resource type="AudioStream" uid="uid://c0wojak3xgph7" path="res://Assets/Music/Framed_Instructions.mp3" id="24_xqfsr"]
-[ext_resource type="AudioStream" uid="uid://0ha3mnwle5qm" path="res://Assets/Music/Framed_Main3_Looped.mp3" id="25_ooqvs"]
+[ext_resource type="PackedScene" uid="uid://chp14kxgg7orf" path="res://Gameplay/Note/Note.tscn" id="25_ooqvs"]
 [ext_resource type="PackedScene" uid="uid://o22lqpnvrhvo" path="res://Reuseable/UI/BackToMenuScreen/BackToMenu.tscn" id="26_d8nhe"]
+[ext_resource type="PackedScene" uid="uid://c1pswfjmlg843" path="res://Gameplay/Safe/SafeScreen.tscn" id="26_gvbx6"]
 
 [node name="DefaultNight" type="Node2D"]
 script = ExtResource("1_skfct")
@@ -210,12 +211,13 @@ visible = false
 process_mode = 3
 stream = ExtResource("24_xqfsr")
 
-[node name="MainMusic" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("25_ooqvs")
-bus = &"Music"
-
 [node name="BackToMenu" parent="." instance=ExtResource("26_d8nhe")]
+
+[node name="Note" parent="." instance=ExtResource("25_ooqvs")]
+position = Vector2(4000, 0)
+
+[node name="SafeScreen" parent="." instance=ExtResource("26_gvbx6")]
+position = Vector2(-4000, 0)
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -1,6 +1,6 @@
 if {HintNumber} == "1":
-	Hint 1
+	Some people prefer pearls, but I enjoy the sparkle of sapphires.
 if {HintNumber} == "2":
-	Hint 2
+	I don't clutch my pearls, I flaunt them
 if {HintNumber} == "3":
-	Hint 3
+	I'm so unique, you could say I'm nature's rarest gem

@@ -33,7 +33,7 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_credits_button_pressed() -> void:
-	pass # Replace with function body.
+	animationPlayer.play("ShowCredits")
 
 
 func _on_quit_button_pressed() -> void:
@@ -54,3 +54,7 @@ func _on_sfx_volume_slider_value_changed(value: float) -> void:
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
+
+
+func _on_back_from_credits_button_pressed() -> void:
+	animationPlayer.play_backwards("ShowCredits")
