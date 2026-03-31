@@ -1,7 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://duiv4ofq35rkr"]
+[gd_scene load_steps=6 format=3 uid="uid://duiv4ofq35rkr"]
 
 [ext_resource type="Script" uid="uid://qoyd431302om" path="res://Reuseable/UI/CameraSystem/camera_system.gd" id="1_bcpub"]
 [ext_resource type="Texture2D" uid="uid://b560ru0mpqnka" path="res://Assets/UI Art/next_painting_button.png" id="2_14ccd"]
+
+[sub_resource type="Animation" id="Animation_14ccd"]
+resource_name = "BlackFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eit16"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dbi4e"]
+_data = {
+&"BlackFade": SubResource("Animation_14ccd"),
+&"RESET": SubResource("Animation_eit16")
+}
 
 [node name="CameraSystem" type="Node2D"]
 script = ExtResource("1_bcpub")
@@ -46,7 +106,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dbi4e")
+}
 
 [connection signal="pressed" from="Buttons/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="Buttons/LeftButton" to="." method="_on_left_button_pressed"]

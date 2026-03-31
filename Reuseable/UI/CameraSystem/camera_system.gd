@@ -39,11 +39,12 @@ func _process(delta: float) -> void:
 func _on_right_button_pressed() -> void:
 	match CurrentPosition:
 		Position.FarLeft:
-			$CanvasLayer.show()
+			$AnimationPlayer.play("BlackFade")
+			await $AnimationPlayer.animation_finished
 			camera.position = CamLeftPos
 			CurrentPosition = Position.Left
-			await get_tree().create_timer(1).timeout
-			$CanvasLayer.hide()
+			await get_tree().create_timer(.5).timeout
+			$AnimationPlayer.play_backwards("BlackFade")
 			
 		Position.Left:
 			camera.position = CamMiddlePos
@@ -54,21 +55,23 @@ func _on_right_button_pressed() -> void:
 			CurrentPosition = Position.Right
 			
 		Position.Right:
-			$CanvasLayer.show()
+			$AnimationPlayer.play("BlackFade")
+			await $AnimationPlayer.animation_finished
 			camera.position = CamFarRightPos
 			CurrentPosition = Position.FarRight
-			await get_tree().create_timer(1).timeout
-			$CanvasLayer.hide()
+			await get_tree().create_timer(.5).timeout
+			$AnimationPlayer.play_backwards("BlackFade")
 
 
 func _on_left_button_pressed() -> void:
 	match CurrentPosition:
 		Position.FarRight:
-			$CanvasLayer.show()
+			$AnimationPlayer.play("BlackFade")
+			await $AnimationPlayer.animation_finished
 			camera.position = CamRightPos
 			CurrentPosition = Position.Right
-			await get_tree().create_timer(1).timeout
-			$CanvasLayer.hide()
+			await get_tree().create_timer(.5).timeout
+			$AnimationPlayer.play_backwards("BlackFade")
 			
 		Position.Right:
 			camera.position = CamMiddlePos
@@ -79,8 +82,9 @@ func _on_left_button_pressed() -> void:
 			CurrentPosition = Position.Left
 			
 		Position.Left:
-			$CanvasLayer.show()
+			$AnimationPlayer.play("BlackFade")
+			await $AnimationPlayer.animation_finished
 			camera.position = CamFarLeftPos
 			CurrentPosition = Position.FarLeft
-			await get_tree().create_timer(1).timeout
-			$CanvasLayer.hide()
+			await get_tree().create_timer(.5).timeout
+			$AnimationPlayer.play_backwards("BlackFade")

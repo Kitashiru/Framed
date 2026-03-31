@@ -630,6 +630,9 @@ libraries = {
 [node name="SabotageResetTimer" type="Timer" parent="."]
 wait_time = 80.0
 
+[node name="GuessSoundPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
 [connection signal="timeout" from="SabatogeTimer" to="." method="_on_sabatoge_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="pressed" from="SabotageMenu/CheckButton" to="." method="_on_check_button_pressed"]

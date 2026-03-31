@@ -24,7 +24,7 @@ var PaintingList = []
 
 var rng = RandomNumberGenerator.new()
 
-var CurrentTime = 1
+var CurrentTime = 12
 var LastUpdatedTime
 
 var HintsLeft = 3
@@ -195,12 +195,15 @@ func _on_event_timer_timeout() -> void:
 				LeftNotice.visible = false
 
 func _on_timer_timeout() -> void:
+	if CurrentTime == 12.5:
+		CurrentTime = 1
+	else:
 		CurrentTime += 0.5
-		if CurrentTime == 6:
-			GameData.CorrectGuesses = MiddlePainting.CorrectGuesses + LeftPainting.CorrectGuesses + RightPainting.CorrectGuesses
-			GameData.IncorrectGuesses =  MiddlePainting.IncorrectGuesses + LeftPainting.IncorrectGuesses + RightPainting.IncorrectGuesses
-			GameData.MissedSabotages = MiddlePainting.MissedSabotages + LeftPainting.MissedSabotages + RightPainting.MissedSabotages
-			get_tree().change_scene_to_file("res://Menus/ResultsScreen/ResultsScreen.tscn")
+	if CurrentTime == 6:
+		GameData.CorrectGuesses = MiddlePainting.CorrectGuesses + LeftPainting.CorrectGuesses + RightPainting.CorrectGuesses
+		GameData.IncorrectGuesses =  MiddlePainting.IncorrectGuesses + LeftPainting.IncorrectGuesses + RightPainting.IncorrectGuesses
+		GameData.MissedSabotages = MiddlePainting.MissedSabotages + LeftPainting.MissedSabotages + RightPainting.MissedSabotages
+		get_tree().change_scene_to_file("res://Menus/ResultsScreen/ResultsScreen.tscn")
 
 
 func _on_pause_button_pressed() -> void:

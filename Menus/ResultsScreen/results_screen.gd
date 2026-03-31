@@ -21,12 +21,12 @@ func _ready() -> void:
 	Missed = GameData.MissedSabotages
 	
 	CorrectSabotageCount.text = "Sabotages Corrected: " + str(CorrectGuesses)
-	CorrectSabotageScore.text = "+ " + str(CorrectGuesses * 50)
+	CorrectSabotageScore.text = "+ " + str(CorrectGuesses * 100)
 	WrongSabotageCount.text = "Incorrect Sabotages: " + str(IncorrectGuesses)
 	WrongSabotageScore.text = "- " + str(IncorrectGuesses * 50)
 	MissedSabotageCount.text = "Missed Sabotages: " + str(Missed)
 	MissedSabotageScore.text = "- " + str(Missed * 50)
-	finalscore = ((CorrectGuesses * 50) - (IncorrectGuesses * 50) - (Missed * 50)) + 195
+	finalscore = ((CorrectGuesses * 100) - (IncorrectGuesses * 50) - (Missed * 50)) + 195
 	FinalScoreLabel.text = str(finalscore)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -30,6 +30,10 @@ extends Node2D
 @onready var ResetTimer = $ResetTimer
 @onready var PaintingSprite = $Painting
 @onready var animationplayer = $AnimationPlayer
+@onready var GuessSoundPlayer = $GuessSoundPlayer
+
+var CorrectSoundPath = "res://Assets/GuessSounds/Correct_Guess.mp3"
+var IncorrectSoundPath = "res://Assets/GuessSounds/Wrong_Guess.mp3"
 
 var CorrectGuesses = 0
 var IncorrectGuesses = 0
@@ -65,8 +69,6 @@ func _process(delta: float) -> void:
 func ChangeToMischievous() -> void:
 	CurrentState = PaintingState.Mischievous
 	
-#func ChangeToSabatoge() -> void:
-#	CurrentState = PaintingState.Sabatoge
 
 func StartSabatogeTimer(Running: bool) -> void:
 	if SabatogeTimer.is_stopped():
@@ -105,8 +107,7 @@ func setSabotage():
 	SabotageResetTimer.start()
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event.is_action_pressed("left_click"): # 'left_click' should be set up in Project Settings
-		#print("2D object clicked!")
+	if event.is_action_pressed("left_click"):
 		$SabotageMenu.visible = true
 
 func _on_check_button_pressed() -> void:
@@ -121,6 +122,8 @@ func _on_check_button_pressed() -> void:
 			handle_sabotage4()
 		_: 
 			IncorrectGuesses += 1
+			GuessSoundPlayer.stream = load(IncorrectSoundPath)
+			GuessSoundPlayer.play()
 	SabotageResetTimer.stop()
 	$SabotageMenu.visible = false
 	ClearCheckBoxes()
@@ -155,8 +158,12 @@ func handle_sabotage1():
 
 	if is_correct:
 		CorrectGuesses += 1
+		GuessSoundPlayer.stream = load(CorrectSoundPath)
+		GuessSoundPlayer.play()
 	else:
 		IncorrectGuesses += 1
+		GuessSoundPlayer.stream = load(IncorrectSoundPath)
+		GuessSoundPlayer.play()
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -192,8 +199,12 @@ func handle_sabotage2():
 
 	if is_correct:
 		CorrectGuesses += 1
+		GuessSoundPlayer.stream = load(CorrectSoundPath)
+		GuessSoundPlayer.play()
 	else:
 		IncorrectGuesses += 1
+		GuessSoundPlayer.stream = load(IncorrectSoundPath)
+		GuessSoundPlayer.play()
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -229,8 +240,12 @@ func handle_sabotage3():
 
 	if is_correct:
 		CorrectGuesses += 1
+		GuessSoundPlayer.stream = load(CorrectSoundPath)
+		GuessSoundPlayer.play()
 	else:
 		IncorrectGuesses += 1
+		GuessSoundPlayer.stream = load(IncorrectSoundPath)
+		GuessSoundPlayer.play()
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
@@ -266,8 +281,12 @@ func handle_sabotage4():
 
 	if is_correct:
 		CorrectGuesses += 1
+		GuessSoundPlayer.stream = load(CorrectSoundPath)
+		GuessSoundPlayer.play()
 	else:
 		IncorrectGuesses += 1
+		GuessSoundPlayer.stream = load(IncorrectSoundPath)
+		GuessSoundPlayer.play()
 
 	CurrentState = PaintingState.Rest
 	PaintingSprite.texture = load(baseImgPath)
