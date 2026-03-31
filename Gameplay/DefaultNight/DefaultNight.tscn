@@ -29,8 +29,8 @@
 
 [node name="DefaultNight" type="Node2D"]
 script = ExtResource("1_skfct")
-MinimumEventTime = 10
-MaximumEventTime = 20
+MinimumEventTime = 15
+MaximumEventTime = 30
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

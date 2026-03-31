@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://chp14kxgg7orf"]
+[gd_scene load_steps=6 format=3 uid="uid://chp14kxgg7orf"]
 
 [ext_resource type="Script" uid="uid://lu10r0nytcfv" path="res://Gameplay/Note/note.gd" id="1_6q47x"]
 [ext_resource type="Texture2D" uid="uid://b2a5u6c85v8ji" path="res://Assets/NoteScreen/security_desk_with_note.png" id="2_i56dp"]
 [ext_resource type="Shader" uid="uid://cnd4o5k65jqbr" path="res://Reuseable/UI/PauseScreen/PauseScreen.gdshader" id="3_jgs7w"]
 [ext_resource type="Texture2D" uid="uid://bpb27d22opqq7" path="res://Assets/NoteScreen/security_desk_note.png" id="4_i56dp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuain"]
-size = Vector2(1357.97, 709.083)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w04vn"]
 shader = ExtResource("3_jgs7w")
@@ -21,12 +18,10 @@ texture = ExtResource("2_i56dp")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-216.657, 28.768)
-rotation = -0.219719
-scale = Vector2(0.685927, 1.56733)
-skew = -0.312791
-shape = SubResource("RectangleShape2D_cuain")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-103, 110)
+scale = Vector2(81.6, 42.6)
+polygon = PackedVector2Array(-9.97549, -9.97653, -0.943627, -13.8263, 6.96078, 6.29108, -1.04167, 10.2817, -3.76225, 10.3521)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
